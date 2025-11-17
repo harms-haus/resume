@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blake Harms - Software Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --secondary-color: #64748b;
+            --accent-color: #f59e0b;
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-light: #94a3b8;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-accent: #fef3c7;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-stark: 0 8px 25px -6px rgba(0, 0, 0, 0.15), 0 4px 8px -2px rgba(0, 0, 0, 0.1);
+            --transition-fast: 0.15s ease-out;
+            --transition-normal: 0.3s ease-out;
+            --border-radius-sm: 0.25rem;
+            --border-radius-md: 0.375rem;
+            --border-radius-lg: 0.5rem;
+        }
+
+        [data-theme="dark"] {
+            --primary-color: #3b82f6;
+            --primary-hover: #2563eb;
+            --secondary-color: #94a3b8;
+            --accent-color: #f59e0b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+            --text-light: #64748b;
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-accent: #fef3c7;
+            --border-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-primary);
+            font-size: 16px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all var(--transition-fast);
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-hover) 100%);
+            color: white;
+            padding: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><pattern id="grain" width="100" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="0.5" fill="rgba(255,255,255,0.1)"/><circle cx="30" cy="5" r="0.3" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="15" r="0.4" fill="rgba(255,255,255,0.07)"/><circle cx="70" cy="8" r="0.2" fill="rgba(255,255,255,0.03)"/><circle cx="90" cy="12" r="0.3" fill="rgba(255,255,255,0.06)"/></pattern></defs><rect width="100" height="20" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .name {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.1;
+        }
+
+        .title {
+            font-size: 1.25rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border-color);
+            color: var(--text-primary);
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+            font-size: 1.125rem;
+        }
+
+        .theme-toggle:hover {
+            background-color: var(--bg-secondary);
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: var(--border-radius-md);
+            transition: all var(--transition-fast);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-links a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Main Content */
+        .main-content {
+            padding: 4rem 0;
+        }
+
+        .section {
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .section-title::before {
+            content: '';
+            width: 3rem;
+            height: 0.25rem;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: var(--border-radius-sm);
+        }
+
+        /* Professional Summary */
+        .summary {
+            background-color: var(--bg-secondary);
+            padding: 2rem;
+            border-radius: 0;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-stark);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Experience */
+        .experience-item {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            transition: all var(--transition-normal);
+            position: relative;
+            box-shadow: var(--shadow-stark);
+        }
+
+        .experience-item:hover {
+            box-shadow: var(--shadow-stark), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            transform: translateY(-4px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 6px;
+            background: linear-gradient(180deg, var(--primary-color), var(--accent-color));
+            border-radius: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .experience-company {
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--primary-color);
+        }
+
+        .experience-period {
+            background-color: var(--bg-accent);
+            color: #92400e;
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--border-radius-sm);
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+
+        .experience-role {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .experience-description {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .experience-description li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .experience-description li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 0.5rem;
+            height: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            border-radius: 50%;
+            opacity: 0.8;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            padding: 1.5rem;
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-stark);
+        }
+
+        .skill-category:hover {
+            box-shadow: var(--shadow-stark), 0 15px 20px -5px rgba(0, 0, 0, 0.12);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .skill-category h4 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background-color: var(--bg-secondary);
+            color: var(--text-secondary);
+            padding: 0.375rem 0.75rem;
+            border-radius: var(--border-radius-md);
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all var(--transition-fast);
+        }
+
+        .skill-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-1px);
+        }
+
+        /* Education */
+        .education-item {
+            background-color: var(--bg-primary);
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-stark);
+        }
+
+        .education-item:hover {
+            box-shadow: var(--shadow-stark), 0 12px 16px -4px rgba(0, 0, 0, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .education-degree {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-school {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .education-year {
+            color: var(--text-light);
+            font-size: 0.875rem;
+        }
+
+        /* Additional Info */
+        .additional-info {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            padding: 2rem;
+            box-shadow: var(--shadow-stark);
+        }
+
+        .additional-info h4 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .additional-info ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .additional-info li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            line-height: 1.5;
+        }
+
+        .additional-info li::before {
+            content: '\f0da';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--primary-color);
+            opacity: 0.8;
+        }
+
+        /* Mobile Menu */
+        .mobile-header {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 1rem;
+            z-index: 1000;
+        }
+
+        .mobile-header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .mobile-menu-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: var(--bg-primary);
+            border-right: 1px solid var(--border-color);
+            padding: 4rem 2rem 2rem;
+            transition: left var(--transition-normal);
+            overflow-y: auto;
+            z-index: 1001;
+            border-radius: 0;
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            border-radius: 0;
+        }
+
+        .mobile-nav {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+        }
+
+        .mobile-nav li {
+            margin-bottom: 1rem;
+        }
+
+        .mobile-nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: color var(--transition-fast);
+            display: block;
+            padding: 0.5rem 0;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            z-index: 1002;
+            transition: width 0.1s ease-out;
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--primary-color);
+            color: white;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-fast);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-header {
+                display: block;
+            }
+
+            .header {
+                padding: 2rem 0;
+            }
+
+            .name {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .experience-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .main-content {
+                padding: 2rem 0;
+            }
+
+            .section {
+                margin-bottom: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.25rem;
+            }
+
+            .back-to-top {
+                bottom: 1rem;
+                right: 1rem;
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .experience-item {
+                padding: 1.5rem;
+            }
+
+            .summary {
+                padding: 1.5rem;
+            }
+
+.mobile-menu {
+                 width: 100%;
+                 padding: 3rem 1rem 1rem;
+                 border-radius: 0;
+             }
+
+.mobile-menu-close {
+                 top: 1rem;
+                 right: 1rem;
+                 border-radius: 0;
+             }
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress"></div>
+
+    <!-- Mobile Header -->
+    <header class="mobile-header">
+        <div class="container">
+            <h2 class="name">Blake Harms</h2>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <h1 class="name">Blake Harms</h1>
+            <p class="title">Senior Software Engineer</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Katy, Texas</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>(713) 702-9498</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>blake@harms.haus</span>
+                </div>
+            </div>
+
+            <div class="social-links">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <a href="https://linkedin.com/in/blake-harms-7263bb118" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Professional Summary -->
+            <section class="section" id="summary">
+                <h2 class="section-title">
+                    <i class="fas fa-user-tie"></i>
+                    Professional Summary
+                </h2>
+                <div class="summary">
+                    <p>Full-stack software engineer with 8+ years of experience at Emerson, specializing in high-performance C# simulations, modern web frameworks, and DevOps infrastructure. Led solo migration of large legacy desktop framework to Angular/TypeScript architecture. Proven ability to drive modernization initiatives, establish engineering best practices, and lead development teams through complex technical transformations.</p>
+                </div>
+            </section>
+
+            <!-- Professional Experience -->
+            <section class="section" id="experience">
+                <h2 class="section-title">
+                    <i class="fas fa-briefcase"></i>
+                    Professional Experience
+                </h2>
+                
+                <div class="experience-item animate-on-scroll">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Senior Software Engineer</h3>
+                            <p class="experience-company">Emerson</p>
+                        </div>
+                        <span class="experience-period">April 2017 – Present</span>
+                    </div>
+                    
+                    <div class="experience-role">Framework Modernization and Web Migration</div>
+                    <ul class="experience-description">
+                        <li>Led 4-year solo effort to rebuild legacy C# WPF desktop framework as modern Angular/TypeScript web application with a near-zero loss of functionality</li>
+                        <li>Led an effort to refactor old code in a structured, efficient way resolving ~60% of technical debt and implementing unit-testing and domain-based structures</li>
+                        <li>Transitioned to team lead role overseeing framework modernization initiatives with expanded team support</li>
+                        <li>Architected core integration and design systems using Angular, TypeScript, and SASS/CSS3</li>
+                    </ul>
+                    
+                    <div class="experience-role">DevOps and Development Infrastructure</div>
+                    <ul class="experience-description">
+                        <li>Implemented Docker-based containerized environment for standardized debugging and deployment workflows across development and production</li>
+                        <li>Executed complete SVN-to-Git migration while preserving full version history and restructuring monolithic repository into multiple domain-separated repositories and trained coworkers on git</li>
+                        <li>Established CI/CD automated build pipelines in Azure</li>
+                    </ul>
+                    
+                    <div class="experience-role">Testing and Quality Practices</div>
+                    <ul class="experience-description">
+                        <li>Introduced automated testing framework and established testing practices across codebase, despite push-back from coworkers</li>
+                        <li>Led efforts to modernize development practices with git repositories, pull-requests/pair-programming</li>
+                        <li>Wrote scripts and prompts for safe Github Copilot usage transition, developed best-practices and trained members on proper usage and appropriate applications</li>
+                    </ul>
+                    
+                    <div class="experience-role">Engineering and Performance</div>
+                    <ul class="experience-description">
+                        <li>Developed C# high-performance mathematical engineering simulations for computationally intensive calculations and data processing</li>
+                        <li>Designed and iterated on WPF user interfaces, conducting user research and implementing UX improvements that enhanced user workflows and productivity</li>
+                    </ul>
+                </div>
+
+                <div class="experience-item animate-on-scroll">
+                    <div class="experience-header">
+                        <div>
+                            <h3 class="experience-title">Software Engineer</h3>
+                            <p class="experience-company">Wood</p>
+                        </div>
+                        <span class="experience-period">May 2012 - April 2017</span>
+                    </div>
+                    
+                    <div class="experience-role">Utility Designer</div>
+                    <ul class="experience-description">
+                        <li>WPF MVVM developer for ~5 years at Wood</li>
+                        <li>Designed internal applications for engineers to configure Oil & Gas fluid dynamics simulations</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Skills -->
+            <section class="section" id="skills">
+                <h2 class="section-title">
+                    <i class="fas fa-laptop-code"></i>
+                    Skills
+                </h2>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h4><i class="fas fa-code"></i> Languages</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">TypeScript</span>
+                            <span class="skill-item">C#</span>
+                            <span class="skill-item">JavaScript</span>
+                            <span class="skill-item">SQL</span>
+                            <span class="skill-item">PowerShell</span>
+                            <span class="skill-item">Bash/Zsh</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-desktop"></i> Frontend</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Angular (Expert)</span>
+                            <span class="skill-item">React</span>
+                            <span class="skill-item">SASS</span>
+                            <span class="skill-item">CSS3</span>
+                            <span class="skill-item">WPF</span>
+                            <span class="skill-item">HTML5</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-vial"></i> Testing & QA</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Jest</span>
+                            <span class="skill-item">Vitest</span>
+                            <span class="skill-item">Playwright</span>
+                            <span class="skill-item">XUnit</span>
+                            <span class="skill-item">NSubstitute</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-server"></i> Backend</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">C# (High-Performance)</span>
+                            <span class="skill-item">Node.js</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-cogs"></i> DevOps & Tools</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Docker</span>
+                            <span class="skill-item">Git</span>
+                            <span class="skill-item">SVN</span>
+                            <span class="skill-item">CI/CD</span>
+                            <span class="skill-item">Azure DevOps</span>
+                            <span class="skill-item">GitHub</span>
+                            <span class="skill-item">Linux Administration</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-star"></i> Practices</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Component Architecture</span>
+                            <span class="skill-item">Automated Testing</span>
+                            <span class="skill-item">UX Design</span>
+                            <span class="skill-item">Agile Development</span>
+                            <span class="skill-item">Technical Leadership</span>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h4><i class="fas fa-brain"></i> AI & Context Engineering</h4>
+                        <div class="skill-list">
+                            <span class="skill-item">Claude</span>
+                            <span class="skill-item">Copilot</span>
+                            <span class="skill-item">Cursor</span>
+                            <span class="skill-item">KiloCode</span>
+                            <span class="skill-item">Prompt Engineering</span>
+                            <span class="skill-item">AI-Assisted Development</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="section" id="education">
+                <h2 class="section-title">
+                    <i class="fas fa-graduation-cap"></i>
+                    Education
+                </h2>
+                
+                <div class="education-item animate-on-scroll">
+                    <div class="education-degree">Bachelor of Science in Computer Science</div>
+                    <div class="education-school">University of Houston</div>
+                    <div class="education-year">2012</div>
+                    <p style="margin-top: 0.5rem; font-size: 0.875rem; color: var(--text-secondary);">Minor in Mathematics</p>
+                </div>
+            </section>
+
+            <!-- Additional Information -->
+            <section class="section" id="additional">
+                <h2 class="section-title">
+                    <i class="fas fa-info-circle"></i>
+                    Additional Information
+                </h2>
+                
+                <div class="additional-info">
+                    <h4>Technical Interests & Projects</h4>
+                    <ul>
+                        <li>Based in Katy, Texas with expertise in full-stack development and infrastructure modernization</li>
+                        <li>Manage Home-Assistant instance with automations for 300+ separate entities across two mesh networks</li>
+                        <li>Host privacy-focused self-hosted services for family usage on Proxmox and UNRAID infrastructure</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Back to Top Button -->
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <button class="mobile-menu-close" id="mobileMenuClose">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav>
+            <ul class="mobile-nav">
+                <li><a href="#summary" class="mobile-nav-link">Summary</a></li>
+                <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+                <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+                <li><a href="#education" class="mobile-nav-link">Education</a></li>
+                <li><a href="#additional" class="mobile-nav-link">Additional</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script>
+        // Theme Management
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        // Check for saved theme preference or use system preference
+        function getSystemTheme() {
+            return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+
+        function setTheme(theme) {
+            if (theme === 'dark') {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.className = 'fas fa-sun';
+                themeToggle.title = 'Switch to light mode';
+            } else {
+                body.removeAttribute('data-theme');
+                themeIcon.className = 'fas fa-moon';
+                themeToggle.title = 'Switch to dark mode';
+            }
+            localStorage.setItem('theme', theme);
+        }
+
+        function initializeTheme() {
+            const savedTheme = localStorage.getItem('theme');
+            const systemTheme = getSystemTheme();
+            const themeToUse = savedTheme || systemTheme;
+            setTheme(themeToUse);
+        }
+
+        // Listen for system theme changes
+        function listenForSystemThemeChanges() {
+            if (window.matchMedia) {
+                const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+                mediaQuery.addEventListener('change', (e) => {
+                    const savedTheme = localStorage.getItem('theme');
+                    // Only update if user hasn't explicitly set a preference
+                    if (!savedTheme) {
+                        setTheme(e.matches ? 'dark' : 'light');
+                    }
+                });
+            }
+        }
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme') || 'light';
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            setTheme(newTheme);
+        });
+
+        // Initialize theme on page load
+        initializeTheme();
+        listenForSystemThemeChanges();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenuClose = document.getElementById('mobileMenuClose');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        mobileMenuClose.addEventListener('click', () => {
+            mobileMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Progress Bar
+        const scrollProgress = document.querySelector('.scroll-progress');
+
+        function updateScrollProgress() {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.offsetHeight;
+            const winHeight = window.innerHeight;
+            const scrollPercent = scrollTop / (docHeight - winHeight);
+            const scrollPercentRounded = Math.round(scrollPercent * 100);
+            scrollProgress.style.width = `${scrollPercentRounded}%`;
+        }
+
+        window.addEventListener('scroll', updateScrollProgress);
+
+        // Back to Top Button
+        const backToTop = document.getElementById('backToTop');
+
+        function toggleBackToTop() {
+            if (window.pageYOffset > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        }
+
+        window.addEventListener('scroll', toggleBackToTop);
+
+        backToTop.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animation on Scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate-on-scroll');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementTop < windowHeight - 50) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        }
+
+        // Set initial styles for animation
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            element.style.opacity = '0';
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+        });
+
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        // Initialize animations on load
+        animateOnScroll();
+    </script>
+</body>
+</html>
