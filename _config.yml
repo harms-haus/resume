@@ -1,0 +1,37 @@
+# GitHub Pages Configuration (Classic Jekyll Style)
+# Site settings
+title: Blake Harms - Resume
+description: Full-stack software engineer with 8+ years of experience specializing in high-performance C# simulations, modern web frameworks, and DevOps infrastructure
+url: https://harms-haus.github.io  # Update with your GitHub Pages URL
+baseurl: ""  # Leave empty if site is at root, or use "/repository-name" for subdirectory
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+encoding: UTF-8
+
+# Jekyll settings
+safe: true
+lsi: false
+incremental: false
+
+# Kramdown settings
+kramdown:
+  syntax_highlighter: rouge
+  math_engine: mathjax
+
+# Plugins (GitHub Pages supports these by default)
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+# Exclude files from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor
+  - .git
+  - .gitignore
+  - README.md
+
