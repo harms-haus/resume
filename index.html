@@ -146,6 +146,21 @@
             letter-spacing: 0.02em;
         }
 
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition);
+        }
+
+        .contact-item a:hover {
+            color: var(--navy);
+            text-decoration: underline;
+        }
+
+        [data-theme="dark"] .contact-item a:hover {
+            color: var(--gold);
+        }
+
         .pill {
             display: inline-flex;
             align-items: center;
@@ -371,11 +386,25 @@
             font-size: 0.9rem;
             text-transform: uppercase;
             letter-spacing: 0.08em;
+            text-decoration: none;
+            display: inline-block;
+            transition: all var(--transition);
+        }
+
+        .chip:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(7, 24, 51, 0.15);
+            border-color: var(--navy);
         }
 
         [data-theme="dark"] .chip {
             border-color: rgba(246, 248, 255, 0.3);
             color: var(--muted);
+        }
+
+        [data-theme="dark"] .chip:hover {
+            border-color: var(--gold);
+            box-shadow: 0 4px 8px rgba(244, 201, 93, 0.2);
         }
 
         .education-card {
@@ -479,9 +508,9 @@
             </div>
             <div class="contact-grid">
                 <div class="contact-item">Katy, Texas</div>
-                <div class="contact-item">(713) 702-9498</div>
-                <div class="contact-item">blake@harms.haus</div>
-                <div class="contact-item">linkedin.com/in/blake-harms-7263bb118</div>
+                <div class="contact-item"><a href="tel:+17137029498">(713) 702-9498</a></div>
+                <div class="contact-item"><a href="mailto:blake@harms.haus">blake@harms.haus</a></div>
+                <div class="contact-item"><a href="https://linkedin.com/in/blake-harms-7263bb118">linkedin.com/in/blake-harms-7263bb118</a></div>
             </div>
             <p class="summary-text">
                 Full-stack software engineer with 8+ years at Emerson delivering high-performance C# simulations, Angular/TypeScript frameworks, and resilient DevOps infrastructure. Drives modernization, testing culture, and AI-assisted workflows with hands-on leadership.
@@ -572,52 +601,52 @@
                     <article class="panel accent-top skill-category" data-animate>
                         <h4>Languages</h4>
                         <div class="chip-group">
-                            <span class="chip">TypeScript</span>
-                            <span class="chip">C#</span>
-                            <span class="chip">JavaScript</span>
-                            <span class="chip">SQL</span>
-                            <span class="chip">PowerShell</span>
-                            <span class="chip">Bash/Zsh</span>
+                            <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" class="chip">TypeScript</a>
+                            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="chip">C#</a>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="chip">JavaScript</a>
+                            <a href="https://www.iso.org/standard/63555.html" target="_blank" rel="noopener noreferrer" class="chip">SQL</a>
+                            <a href="https://learn.microsoft.com/en-us/powershell/" target="_blank" rel="noopener noreferrer" class="chip">PowerShell</a>
+                            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener noreferrer" class="chip">Bash/Zsh</a>
                         </div>
                     </article>
                     <article class="panel accent-bottom skill-category" data-animate>
                         <h4>Frontend</h4>
                         <div class="chip-group">
-                            <span class="chip">Angular (expert)</span>
-                            <span class="chip">React</span>
-                            <span class="chip">SASS</span>
-                            <span class="chip">CSS3</span>
-                            <span class="chip">WPF</span>
-                            <span class="chip">HTML5</span>
+                            <a href="https://angular.dev/" target="_blank" rel="noopener noreferrer" class="chip">Angular (expert)</a>
+                            <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" class="chip">React</a>
+                            <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer" class="chip">SASS</a>
+                            <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer" class="chip">CSS3</a>
+                            <a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/" target="_blank" rel="noopener noreferrer" class="chip">WPF</a>
+                            <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer" class="chip">HTML5</a>
                         </div>
                     </article>
                     <article class="panel accent-top skill-category" data-animate>
                         <h4>Testing & QA</h4>
                         <div class="chip-group">
-                            <span class="chip">Jest</span>
-                            <span class="chip">Vitest</span>
-                            <span class="chip">Playwright</span>
-                            <span class="chip">xUnit</span>
-                            <span class="chip">NSubstitute</span>
+                            <a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer" class="chip">Jest</a>
+                            <a href="https://vitest.dev/" target="_blank" rel="noopener noreferrer" class="chip">Vitest</a>
+                            <a href="https://playwright.dev/" target="_blank" rel="noopener noreferrer" class="chip">Playwright</a>
+                            <a href="https://xunit.net/" target="_blank" rel="noopener noreferrer" class="chip">xUnit</a>
+                            <a href="https://nsubstitute.github.io/" target="_blank" rel="noopener noreferrer" class="chip">NSubstitute</a>
                         </div>
                     </article>
                     <article class="panel accent-bottom skill-category" data-animate>
                         <h4>Backend</h4>
                         <div class="chip-group">
-                            <span class="chip">C# simulations</span>
-                            <span class="chip">Node.js</span>
+                            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="chip">C# simulations</a>
+                            <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="chip">Node.js</a>
                         </div>
                     </article>
                     <article class="panel accent-top skill-category" data-animate>
                         <h4>DevOps & Tools</h4>
                         <div class="chip-group">
-                            <span class="chip">Docker</span>
-                            <span class="chip">Git</span>
-                            <span class="chip">SVN</span>
+                            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="chip">Docker</a>
+                            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="chip">Git</a>
+                            <a href="https://subversion.apache.org/" target="_blank" rel="noopener noreferrer" class="chip">SVN</a>
                             <span class="chip">CI/CD</span>
-                            <span class="chip">Azure DevOps</span>
-                            <span class="chip">GitHub</span>
-                            <span class="chip">Linux admin</span>
+                            <a href="https://azure.microsoft.com/en-us/products/devops" target="_blank" rel="noopener noreferrer" class="chip">Azure DevOps</a>
+                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="chip">GitHub</a>
+                            <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer" class="chip">Linux admin</a>
                         </div>
                     </article>
                     <article class="panel accent-bottom skill-category" data-animate>
@@ -628,9 +657,9 @@
                             <span class="chip">UX design</span>
                             <span class="chip">Agile delivery</span>
                             <span class="chip">Technical leadership</span>
-                            <span class="chip">Claude</span>
-                            <span class="chip">Copilot</span>
-                            <span class="chip">Cursor</span>
+                            <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer" class="chip">Claude</a>
+                            <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="chip">Copilot</a>
+                            <a href="https://cursor.sh/" target="_blank" rel="noopener noreferrer" class="chip">Cursor</a>
                             <span class="chip">KiloCode</span>
                             <span class="chip">Prompt engineering</span>
                         </div>
