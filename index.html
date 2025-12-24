@@ -342,6 +342,14 @@
             margin-top: 0.6rem;
         }
 
+        .experience-block p {
+            margin-bottom: 0.8rem;
+        }
+
+        .experience-block p:last-child {
+            margin-bottom: 0;
+        }
+
         .experience-block li {
             position: relative;
             padding-left: 1.5rem;
@@ -405,6 +413,31 @@
         [data-theme="dark"] .chip:hover {
             border-color: var(--gold);
             box-shadow: 0 4px 8px rgba(244, 201, 93, 0.2);
+        }
+
+        .chip-expert {
+            background: var(--accent-gradient);
+            color: white;
+            border: 1px solid transparent;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(11, 61, 145, 0.3);
+        }
+
+        .chip-expert:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(11, 61, 145, 0.4);
+        }
+
+        [data-theme="dark"] .chip-expert {
+            box-shadow: 0 2px 8px rgba(244, 201, 93, 0.4);
+        }
+
+        [data-theme="dark"] .chip-expert:hover {
+            box-shadow: 0 6px 12px rgba(244, 201, 93, 0.5);
+        }
+
+        [data-theme="dark"] .chip-expert {
+            color: black;
         }
 
         .education-card {
@@ -595,15 +628,94 @@
             </section>
 
             <section>
+                <div class="section-heading">Personal Projects</div>
+                <h2 class="section-title">AI Deep-Dive</h2>
+                <div class="experience-grid">
+                    <article class="panel accent-left experience-card" data-animate>
+                        <h3 class="gradient-text">Jester</h3>
+                        <div class="experience-meta">
+                            <span>AI Story Generation Framework</span>
+                            <span>Context-Only Architecture</span>
+                        </div>
+
+                        <div class="experience-block">
+                            <p class="summary-text">A sophisticated context-only bedtime story writing framework powered by LLMs instructed with a set of rules, procedures and plans, featuring a hybrid GraphRAG backend that maintains 40+ interconnected stories with Wikipedia-level detail about characters, locations, and events.</p>
+                            <p class="summary-text">The framework is designed to be used by myself to generate stories for my daughter with her input. The framework starts with a "context" that lists the characters, locations, and events that are relevant to the story. Next, it generates an outline which I then edit and refine. Finally, it writes the full story and I edit it to be sure there were no hallucinations.</p>
+                        </div>
+
+                        <div class="chip-group">
+                            <span class="chip">LLM-Powered</span>
+                            <span class="chip">Hybrid GraphRAG</span>
+                            <span class="chip">Cross-Linked Stories</span>
+                            <span class="chip">Character-centered</span>
+                        </div>
+                    </article>
+
+                    <article class="panel accent-right experience-card" data-animate>
+                        <h3 class="gradient-text">Memoriae</h3>
+                        <div class="experience-meta">
+                            <span>Personal Knowledge System</span>
+                            <span>LLM-Enhanced Note Taking</span>
+                        </div>
+
+                        <div class="experience-block">
+                            <p class="summary-text">An intelligent note, memory, and idea recording system featuring LLM-based automatic tagging and content enhancement. Hosted locally with Redis backend for complete privacy and performance.</p>
+                            <p class="summary-text">Notes or "seeds" are "grown" by adding metadata and injecting content via LLM prompts. These are auto-categorized and tagged to be searchable.</p>
+                        </div>
+
+                        <div class="chip-group">
+                            <span class="chip">LLM-powered</span>
+                            <span class="chip">Enrichment</span>
+                            <span class="chip">Redis</span>
+                            <span class="chip">Self-Hosted</span>
+                        </div>
+                    </article>
+
+                    <article class="panel accent-left experience-card" data-animate>
+                        <h3 class="gradient-text">Bernard</h3>
+                        <div class="experience-meta">
+                            <span>Home Voice Assistant</span>
+                            <span>Privacy-First AI</span>
+                        </div>
+
+                        <div class="experience-block">
+                            <p class="summary-text">LangChain-powered voice assistant designed to replace Alexa for family use, emphasizing privacy and kid-friendly interactions.</p>
+                            <p class="summary-text">Integrates with Home Assistant to control smart home devices, searches web/Wikipedia, and can manage entertainment across multiple TVs.</p>
+                            <p class="summary-text">The assistant is managed with a web interface for user management, conversation history, and content moderation.</p>
+                            <p class="summary-text">The assistant has a RAG system to "remember" things about the family and the house.</p>
+                        </div>
+
+                        <div class="experience-block">
+                            <h4>Hardware & Features</h4>
+                            <ul>
+                                <li><a href="https://futureproofhomes.net" target="_blank" rel="noopener noreferrer">FutureProofHomes Satellite1</a> hardware integration via Home Assistant voice pipeline</li>
+                                <li>Multi-device ingestion</li>
+                                <li>Manages TV control and entertainment</li>
+                            </ul>
+                        </div>
+
+                        <div class="chip-group">
+                            <span class="chip">LangChain</span>
+                            <span class="chip">Home Assistant</span>
+                            <span class="chip">Voice Assistant</span>
+                            <span class="chip">Privacy-Focused</span>
+                            <span class="chip">Multi-point Ingestion</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section>
                 <div class="section-heading">Skills</div>
                 <h2 class="section-title">Technical Focus</h2>
                 <div class="skills-grid">
                     <article class="panel accent-top skill-category" data-animate>
                         <h4>Languages</h4>
                         <div class="chip-group">
-                            <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" class="chip">TypeScript</a>
-                            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="chip">C#</a>
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="chip">JavaScript</a>
+                            <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">TypeScript</a>
+                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="chip">Python</a>
+                            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">C#</a>
+                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="chip chip-expert">JavaScript</a>
                             <a href="https://www.iso.org/standard/63555.html" target="_blank" rel="noopener noreferrer" class="chip">SQL</a>
                             <a href="https://learn.microsoft.com/en-us/powershell/" target="_blank" rel="noopener noreferrer" class="chip">PowerShell</a>
                             <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener noreferrer" class="chip">Bash/Zsh</a>
@@ -612,56 +724,77 @@
                     <article class="panel accent-bottom skill-category" data-animate>
                         <h4>Frontend</h4>
                         <div class="chip-group">
-                            <a href="https://angular.dev/" target="_blank" rel="noopener noreferrer" class="chip">Angular (expert)</a>
+                            <a href="https://angular.dev/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Angular</a>
                             <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" class="chip">React</a>
+                            <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">HTML5</a>
+                            <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">CSS3</a>
                             <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer" class="chip">SASS</a>
-                            <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer" class="chip">CSS3</a>
-                            <a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/" target="_blank" rel="noopener noreferrer" class="chip">WPF</a>
-                            <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer" class="chip">HTML5</a>
+                            <a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">WPF</a>
                         </div>
                     </article>
                     <article class="panel accent-top skill-category" data-animate>
-                        <h4>Testing & QA</h4>
+                        <h4>Backend & APIs</h4>
+                        <div class="chip-group">
+                            <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Node.js</a>
+                            <span class="chip">C# simulations</span>
+                            <span class="chip chip-expert">REST API</span>
+                            <span class="chip">SignalR</span>
+                            <span class="chip">WebSockets</span>
+                            <span class="chip">Microservices</span>
+                        </div>
+                    </article>
+                    <article class="panel accent-bottom skill-category" data-animate>
+                        <h4>Databases</h4>
+                        <div class="chip-group">
+                            <a href="https://redis.io/" target="_blank" rel="noopener noreferrer" class="chip">Redis</a>
+                            <span class="chip chip-expert">Vector Databases</span>
+                            <span class="chip">Code Graphs</span>
+                            <span class="chip">Tree-sitting</span>
+                        </div>
+                    </article>
+                    <article class="panel accent-top skill-category" data-animate>
+                        <h4>DevOps & Infrastructure</h4>
+                        <div class="chip-group">
+                            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Docker</a>
+                            <span class="chip" chip-expert>CI/CD</span>
+                            <a href="https://azure.microsoft.com/en-us/products/devops" target="_blank" rel="noopener noreferrer" class="chip">Azure DevOps</a>
+                            <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer" class="chip">Linux admin</a>
+                        </div>
+                    </article>
+                    <article class="panel accent-bottom skill-category" data-animate>
+                        <h4>Testing & Quality</h4>
                         <div class="chip-group">
                             <a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer" class="chip">Jest</a>
-                            <a href="https://vitest.dev/" target="_blank" rel="noopener noreferrer" class="chip">Vitest</a>
+                            <a href="https://vitest.dev/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Vitest</a>
                             <a href="https://playwright.dev/" target="_blank" rel="noopener noreferrer" class="chip">Playwright</a>
                             <a href="https://xunit.net/" target="_blank" rel="noopener noreferrer" class="chip">xUnit</a>
                             <a href="https://nsubstitute.github.io/" target="_blank" rel="noopener noreferrer" class="chip">NSubstitute</a>
                         </div>
                     </article>
-                    <article class="panel accent-bottom skill-category" data-animate>
-                        <h4>Backend</h4>
-                        <div class="chip-group">
-                            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="chip">C# simulations</a>
-                            <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="chip">Node.js</a>
-                        </div>
-                    </article>
                     <article class="panel accent-top skill-category" data-animate>
-                        <h4>DevOps & Tools</h4>
+                        <h4>AI & ML</h4>
                         <div class="chip-group">
-                            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="chip">Docker</a>
-                            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="chip">Git</a>
-                            <a href="https://subversion.apache.org/" target="_blank" rel="noopener noreferrer" class="chip">SVN</a>
-                            <span class="chip">CI/CD</span>
-                            <a href="https://azure.microsoft.com/en-us/products/devops" target="_blank" rel="noopener noreferrer" class="chip">Azure DevOps</a>
-                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="chip">GitHub</a>
-                            <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer" class="chip">Linux admin</a>
-                        </div>
-                    </article>
-                    <article class="panel accent-bottom skill-category" data-animate>
-                        <h4>Practices & AI</h4>
-                        <div class="chip-group">
-                            <span class="chip">Component architecture</span>
-                            <span class="chip">Automated testing</span>
-                            <span class="chip">UX design</span>
-                            <span class="chip">Agile delivery</span>
-                            <span class="chip">Technical leadership</span>
+                            <a href="https://python.langchain.com/" target="_blank" rel="noopener noreferrer" class="chip">LangChain</a>
+                            <span class="chip">LLMs</span>
+                            <span class="chip chip-expert">RAG Systems</span>
+                            <span class="chip">Local AI</span>
+                            <span class="chip chip-expert">Prompt engineering</span>
                             <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer" class="chip">Claude</a>
                             <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="chip">Copilot</a>
-                            <a href="https://cursor.sh/" target="_blank" rel="noopener noreferrer" class="chip">Cursor</a>
-                            <span class="chip">KiloCode</span>
-                            <span class="chip">Prompt engineering</span>
+                            <a href="https://cursor.sh/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Cursor</a>
+                        </div>
+                    </article>
+                    <article class="panel accent-bottom skill-category" data-animate>
+                        <h4>Architecture & Leadership</h4>
+                        <div class="chip-group">
+                            <span class="chip">Component architecture</span>
+                            <span class="chip">Technical leadership</span>
+                            <span class="chip">Agile delivery</span>
+                            <span class="chip chip-expert">UX design</span>
+                            <span class="chip">Voice Interfaces</span>
+                            <span class="chip chip-expert">Home Automation</span>
+                            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Git</a>
+                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="chip">GitHub</a>
                         </div>
                     </article>
                 </div>
@@ -674,18 +807,6 @@
                     <div class="education-degree">Bachelor of Science in Computer Science</div>
                     <div class="education-meta">University of Houston · 2012</div>
                     <div class="pill">Minor in Mathematics</div>
-                </article>
-            </section>
-
-            <section>
-                <div class="section-heading">Additional</div>
-                <h2 class="section-title">Beyond the Office</h2>
-                <article class="panel accent-right" data-animate>
-                    <ul class="additional-list">
-                        <li>Based in Katy, Texas with deep full-stack and infrastructure modernization expertise.</li>
-                        <li>Maintains a Home Assistant deployment with 300+ entities across dual mesh networks.</li>
-                        <li>Hosts privacy-focused services for family on Proxmox and UNRAID infrastructure.</li>
-                    </ul>
                 </article>
             </section>
         </main>
