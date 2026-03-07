@@ -1,654 +1,673 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blake Harms - Resume</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        :root {
-            --primary: #0f172a;
-            /* Slate 900 */
-            --secondary: #334155;
-            /* Slate 700 */
-            --accent: #0284c7;
-            /* Sky 600 */
-            --accent-dark: #0369a1;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --bg: #ffffff;
-            --font-head: "Space Grotesk", sans-serif;
-            --font-body: "Inter", sans-serif;
-            --font-mono: "JetBrains Mono", monospace;
-            --col-gap: 1.3rem;
-        }
+      :root {
+        --primary: #0f172a;
+        /* Slate 900 */
+        --secondary: #334155;
+        /* Slate 700 */
+        --accent: #0284c7;
+        /* Sky 600 */
+        --accent-dark: #0369a1;
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --bg: #ffffff;
+        --font-head: "Space Grotesk", sans-serif;
+        --font-body: "Inter", sans-serif;
+        --font-mono: "JetBrains Mono", monospace;
+        --col-gap: 1.3rem;
+      }
 
-        @media print {
-            @page {
-                margin: 0.5in;
-                size: letter;
-            }
-
-            body {
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-                padding: 0;
-            }
-
-            .no-print {
-                display: none !important;
-            }
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+      @media print {
+        @page {
+          margin: 0.5in;
+          size: letter;
         }
 
         body {
-            font-family: var(--font-body);
-            background: var(--bg);
-            color: var(--text-main);
-            font-size: 9.5pt;
-            line-height: 1.5;
-            max-width: 8.5in;
-            margin: 0 auto;
-            padding: 2rem;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          padding: 0;
         }
 
-        /* HEADER */
-        .header {
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 1.5rem;
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .header__identity h1 {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 34pt;
-            line-height: 1;
-            text-transform: uppercase;
-            letter-spacing: -0.04em;
-            color: var(--primary);
-            margin-bottom: 0.4rem;
-        }
-
-        .header__identity h2 {
-            font-family: var(--font-mono);
-            font-size: 11pt;
-            font-weight: 500;
-            color: var(--accent);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .header__contact {
-            text-align: right;
-            font-family: var(--font-mono);
-            font-size: 9pt;
-            color: var(--secondary);
-            display: flex;
-            flex-direction: column;
-            gap: 0.35rem;
-        }
-
-        .header__contact a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .header__contact-row {
-            display: flex;
-            align-items: center;
-            justify-content: flex-end;
-            gap: 0.6rem;
-        }
-
-        .lucide {
-            width: 14px;
-            height: 14px;
-            stroke-width: 2.5px;
-            color: var(--accent);
-            flex-shrink: 0;
-        }
-
-        /* LAYOUT */
-        .grid {
-            display: grid;
-            grid-template-columns: 7fr 3.5fr;
-            gap: var(--col-gap);
-        }
-
-        .main-col {
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
-        }
-
-        .side-col {
-            display: flex;
-            flex-direction: column;
-            gap: 1.8rem;
-            border-left: 1px solid #e2e8f0;
-            padding-left: 1.3rem;
-        }
-
-        /* SECTIONS */
-        .section-title {
-            font-family: var(--font-head);
-            font-size: 14pt;
-            font-weight: 700;
-            text-transform: uppercase;
-            margin-bottom: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            color: var(--primary);
-            border-bottom: 1.5px solid #f1f5f9;
-            padding-bottom: 0.3rem;
-        }
-
-        .section-title::before {
-            content: "//";
-            color: var(--accent);
-            font-family: var(--font-mono);
-            font-weight: 500;
-            font-size: 12pt;
-        }
-
-        /* TEXT */
-        p {
-            margin-bottom: 0.6rem;
-        }
-
-        /* EXPERIENCE */
-        .job-item {
-            margin-bottom: 1.4rem;
-            page-break-inside: avoid;
-        }
-
-        .job-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.2rem;
-        }
-
-        .job-role {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 11.5pt;
-            color: var(--primary);
-        }
-
-        .job-company {
-            font-family: var(--font-head);
-            font-weight: 600;
-            font-size: 10.5pt;
-            color: var(--secondary);
-        }
-
-        .job-date {
-            font-family: var(--font-mono);
-            font-size: 8.5pt;
-            color: var(--accent-dark);
-            font-weight: 500;
-        }
-
-        .job-details ul {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 0.4rem;
-        }
-
-        .job-details li {
-            position: relative;
-            padding-left: 1.1rem;
-            margin-bottom: 0.35rem;
-            color: var(--text-main);
-        }
-
-        .job-details li::before {
-            content: "›";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: 800;
-            font-size: 1.1em;
-            line-height: 1;
-        }
-
-        .tech-stack {
-            font-family: var(--font-mono);
-            font-size: 8pt;
-            color: var(--text-muted);
-            margin-top: 0.5rem;
-            border-top: 1px dotted #e2e8f0;
-            padding-top: 0.2rem;
-        }
-
-        /* PROJECTS */
-        .project-item {
-            margin-bottom: 1.2rem;
-            page-break-inside: avoid;
-        }
-
-        .project-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 0.2rem;
-        }
-
-        .project-title {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 11pt;
-            color: var(--secondary);
-        }
-
-        .project-meta {
-            font-family: var(--font-mono);
-            font-size: 7.5pt;
-            text-transform: uppercase;
-            color: var(--accent-dark);
-            font-weight: 500;
-        }
-
-        .project-desc {
-            font-size: 9pt;
-            color: var(--text-main);
-            margin-bottom: 0.3rem;
-        }
-
-        /* SKILLS (SIDEBAR) */
-        .skill-group {
-            margin-bottom: 1.2rem;
-            page-break-inside: avoid;
-        }
-
-        .skill-group h4 {
-            font-family: var(--font-mono);
-            font-size: 8.0pt;
-            text-transform: uppercase;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
-            border-bottom: 1px dotted #cbd5e1;
-            padding-bottom: 3px;
-        }
-
-        .skill-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.3rem;
-        }
-
-        .skill-tag {
-            font-family: var(--font-body);
-            font-size: 8.5pt;
-            background: #f1f5f9;
-            color: var(--secondary);
-            padding: 2px 8px;
-            border-radius: 2px;
-            font-weight: 500;
-            border: 1px solid transparent;
-        }
-
-        .skill-tag.expert {
-            background: #e0f2fe;
-            color: #0369a1;
-            border: 1px solid #bae6fd;
-        }
-
-        /* EDUCATION */
-        .edu-item {
-            margin-bottom: 1.2rem;
-        }
-
-        .edu-degree {
-            font-weight: 700;
-            font-size: 10pt;
-            color: var(--primary);
-            font-family: var(--font-head);
-        }
-
-        .edu-school {
-            font-size: 9.5pt;
-            color: var(--secondary);
-        }
-
-        .edu-year {
-            font-family: var(--font-mono);
-            font-size: 8.5pt;
-            color: var(--text-muted);
-        }
-
-        /* FOOTER */
-        .doc-footer {
-            margin-top: 2.5rem;
-            border-top: 2px solid var(--primary);
-            padding-top: 0.6rem;
-            display: flex;
-            justify-content: space-between;
-            font-family: var(--font-mono);
-            font-size: 8pt;
-            color: var(--text-muted);
-        }
-
-        /* PRINT HELPERS */
         .no-print {
-            display: flex;
-            gap: 1.5rem;
-            margin-bottom: 2rem;
-            padding: 1.5rem;
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            align-items: center;
+          display: none !important;
+        }
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: var(--font-body);
+        background: var(--bg);
+        color: var(--text-main);
+        font-size: 9.5pt;
+        line-height: 1.5;
+        max-width: 8.5in;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* HEADER */
+      .header {
+        border-bottom: 2px solid var(--primary);
+        padding-bottom: 1rem;
+        margin-bottom: 2rem;
+      }
+
+      .header__top {
+        display: flex;
+        align-items: baseline;
+        gap: 1rem;
+        margin-bottom: 0.6rem;
+      }
+
+      .header__identity h1 {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 28pt;
+        line-height: 1;
+        text-transform: uppercase;
+        letter-spacing: -0.04em;
+        color: var(--primary);
+        margin: 0;
+      }
+
+      .header__title {
+        font-family: var(--font-mono);
+        font-size: 10pt;
+        font-weight: 500;
+        color: var(--accent);
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .header__contact {
+        font-family: var(--font-mono);
+        font-size: 9pt;
+        color: var(--secondary);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem 1.2rem;
+        align-items: center;
+      }
+
+      .header__contact a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .header__contact-item {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        white-space: nowrap;
+      }
+      /* LAYOUT - Single column */
+      .grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .main-col {
+        display: flex;
+        flex-direction: column;
+        gap: 1.8rem;
+      }
+
+      /* SKILLS - Row layout with title and tags on same line */
+      .skills-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .skill-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+      }
+
+      .skill-row-title {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 9pt;
+        color: var(--primary);
+        white-space: nowrap;
+        min-width: 110px;
+      }
+
+      .skill-row-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.35rem;
+        flex: 1;
+      }
+
+      /* SECTIONS */
+      .section-title {
+        font-family: var(--font-head);
+        font-size: 14pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 0.9rem;
+        display: flex;
+        align-items: center;
+        gap: 0.6rem;
+        color: var(--primary);
+        border-bottom: 1.5px solid #f1f5f9;
+        padding-bottom: 0.3rem;
+      }
+
+      .section-title::before {
+        content: "//";
+        color: var(--accent);
+        font-family: var(--font-mono);
+        font-weight: 500;
+        font-size: 12pt;
+      }
+
+      /* TEXT */
+      p {
+        margin-bottom: 0.6rem;
+      }
+
+      /* EXPERIENCE */
+      .job-item {
+        margin-bottom: 1.4rem;
+        page-break-inside: avoid;
+      }
+
+      .job-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.2rem;
+      }
+
+      .job-role {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 11.5pt;
+        color: var(--primary);
+      }
+
+      .job-company {
+        font-family: var(--font-head);
+        font-weight: 600;
+        font-size: 10.5pt;
+        color: var(--secondary);
+      }
+
+      .job-date {
+        font-family: var(--font-mono);
+        font-size: 8.5pt;
+        color: var(--accent-dark);
+        font-weight: 500;
+      }
+
+      .job-details ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 0.4rem;
+      }
+
+      .job-details li {
+        position: relative;
+        padding-left: 1.1rem;
+        margin-bottom: 0.35rem;
+        color: var(--text-main);
+      }
+
+      .job-details li::before {
+        content: "›";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: 800;
+        font-size: 1.1em;
+        line-height: 1;
+      }
+
+      .tech-stack {
+        font-family: var(--font-mono);
+        font-size: 8pt;
+        color: var(--text-muted);
+        margin-top: 0.5rem;
+        border-top: 1px dotted #e2e8f0;
+        padding-top: 0.2rem;
+      }
+
+      /* PROJECTS */
+      .project-item {
+        margin-bottom: 1.2rem;
+        page-break-inside: avoid;
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.2rem;
+      }
+
+      .project-title {
+        font-family: var(--font-head);
+        font-weight: 700;
+        font-size: 11pt;
+        color: var(--secondary);
+      }
+
+      .project-meta {
+        font-family: var(--font-mono);
+        font-size: 7.5pt;
+        text-transform: uppercase;
+        color: var(--accent-dark);
+        font-weight: 500;
+      }
+
+      .project-desc {
+        font-size: 9pt;
+        color: var(--text-main);
+        margin-bottom: 0.3rem;
+      }
+
+      /* SKILLS TAGS */
+      .skill-tag {
+        font-family: var(--font-body);
+        font-size: 8.5pt;
+        background: #f1f5f9;
+        color: var(--secondary);
+        padding: 2px 8px;
+        border-radius: 2px;
+        font-weight: 500;
+        border: 1px solid transparent;
+      }
+
+      .skill-tag.expert {
+        background: #e0f2fe;
+        color: #0369a1;
+        border: 1px solid #bae6fd;
+      }
+
+      /* EDUCATION */
+      .edu-item {
+        margin-bottom: 1.2rem;
+      }
+
+      .edu-degree {
+        font-weight: 700;
+        font-size: 10pt;
+        color: var(--primary);
+        font-family: var(--font-head);
+      }
+
+      .edu-school {
+        font-size: 9.5pt;
+        color: var(--secondary);
+      }
+
+      .edu-year {
+        font-family: var(--font-mono);
+        font-size: 8.5pt;
+        color: var(--text-muted);
+      }
+
+      /* FOOTER */
+      .doc-footer {
+        margin-top: 2.5rem;
+        border-top: 2px solid var(--primary);
+        padding-top: 0.6rem;
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-mono);
+        font-size: 8pt;
+        color: var(--text-muted);
+      }
+
+      /* PRINT HELPERS */
+      .no-print {
+        display: flex;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+        padding: 1.5rem;
+        background: #f8fafc;
+        border: 1px solid #e2e8f0;
+        border-radius: 8px;
+        align-items: center;
+      }
+
+      .btn-print {
+        background: var(--primary);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        font-family: var(--font-head);
+        font-weight: 600;
+        cursor: pointer;
+        border-radius: 6px;
+        transition: background 0.2s;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .btn-print:hover {
+        background: var(--secondary);
+      }
+
+      @media screen and (max-width: 800px) {
+        .grid {
+          gap: 1.5rem;
         }
 
-        .btn-print {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0.75rem 1.5rem;
-            font-family: var(--font-head);
-            font-weight: 600;
-            cursor: pointer;
-            border-radius: 6px;
-            transition: background 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+        .skill-row-title {
+          min-width: 100%;
+          margin-bottom: 0.3rem;
         }
-
-        .btn-print:hover {
-            background: var(--secondary);
-        }
-
-        @media screen and (max-width: 800px) {
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .side-col {
-                border-left: none;
-                padding-left: 0;
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
-    <div class="no-print">
-        <div>
-            <h3 style="margin-bottom: 0.25rem;">Blake Harms · PDF Resume Pro</h3>
-            <p style="font-size: 0.85rem; color: #64748b; margin-bottom: 0;">Designed for high-quality PDF export via
-                Chromium or System Print.</p>
-        </div>
-        <button class="btn-print" onclick="window.print()">
-            <i data-lucide="printer"></i> Print to PDF
-        </button>
-    </div>
-
+  <body>
     <!-- HEADER -->
     <header class="header">
+      <div class="header__top">
         <div class="header__identity">
-            <h1>Blake Harms</h1>
-            <h2>Senior Software Engineer & AI enthusiast</h2>
+          <h1>Blake Harms</h1>
         </div>
-        <div class="header__contact">
-            <div class="header__contact-row">
-                <a href="mailto:blake@harms.haus">blake@harms.haus</a>
-                <i data-lucide="mail"></i>
-            </div>
-            <div class="header__contact-row">
-                <a href="tel:7137029498">(713) 702-9498</a>
-                <i data-lucide="phone"></i>
-            </div>
-            <div class="header__contact-row">
-                <span>Katy, Texas</span>
-                <i data-lucide="map-pin"></i>
-            </div>
-            <div class="header__contact-row">
-                <a href="https://linkedin.com/in/blake-harms-7263bb118">linkedin/in/blake-harms</a>
-                <i data-lucide="linkedin"></i>
-            </div>
+        <span class="header__title"
+          >Senior Software Engineer & AI enthusiast</span
+        >
+      </div>
+      <div class="header__contact">
+        <div class="header__contact-item">
+          <i data-lucide="mail"></i>
+          <a href="mailto:blake@harms.haus">blake@harms.haus</a>
         </div>
+        <div class="header__contact-item">
+          <i data-lucide="phone"></i>
+          <a href="tel:7137029498">(713) 702-9498</a>
+        </div>
+        <div class="header__contact-item">
+          <i data-lucide="map-pin"></i>
+          <span>Katy, Texas</span>
+        </div>
+      </div>
+      <div class="header__contact">
+        <div class="header__contact-item">
+          <i data-lucide="linkedin"></i>
+          <a href="https://linkedin.com/in/blake-harms-7263bb118"
+            >blake-harms-7263bb118</a
+          >
+        </div>
+        <div class="header__contact-item">
+          <i data-lucide="github"></i>
+          <a href="https://github.com/harms-haus">github.com/harms-haus</a>
+        </div>
+        <div class="header__contact-item">
+          <i data-lucide="globe"></i>
+          <a href="https://harms-haus.github.io/resume/"
+            >harms-haus.github.io/resume</a
+          >
+        </div>
+      </div>
     </header>
-
     <div class="grid">
-        <!-- MAIN COLUMN -->
-        <div class="main-col">
+      <!-- GLOBAL SKILLS - Single column row layout -->
+      <section>
+        <div class="skills-container">
+          <div class="skill-row">
+            <span class="skill-row-title">Core Languages:</span>
+            <div class="skill-row-tags">
+              <span class="skill-tag expert">TypeScript</span>
+              <span class="skill-tag expert">C#</span>
+              <span class="skill-tag expert">JavaScript</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">SQL</span>
+              <span class="skill-tag">Bash/Zsh</span>
+            </div>
+          </div>
 
-            <!-- SUMMARY -->
-            <section>
-                <h3 class="section-title">Professional Summary</h3>
-                <p>
-                    Full-stack software engineer with 8+ years experience (Emerson, Wood), specializing in
-                    high-performance C# simulations, Angular-based web platforms, and resilient DevOps infrastructure.
-                    Successfully led a 4-year initiative to modernize mission-critical desktop systems into cloud-ready
-                    Angular environments, reducing technical debt by 60%. Expert in architecting integration layers,
-                    implementing automated testing cultures, and driving safe AI/Copilot adoption within engineering
-                    workflows.
-                </p>
-            </section>
+          <div class="skill-row">
+            <span class="skill-row-title">Frontend:</span>
+            <div class="skill-row-tags">
+              <span class="skill-tag expert">Angular</span>
+              <span class="skill-tag expert">HTML5/CSS3</span>
+              <span class="skill-tag expert">WPF</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">SASS</span>
+            </div>
+          </div>
 
-            <!-- EXPERIENCE -->
-            <section>
-                <h3 class="section-title">Experience</h3>
+          <div class="skill-row">
+            <span class="skill-row-title">Backend:</span>
+            <div class="skill-row-tags">
+              <span class="skill-tag expert">Node.js</span>
+              <span class="skill-tag expert">REST API</span>
+              <span class="skill-tag expert">Vector DB</span>
+              <span class="skill-tag">Microservices</span>
+              <span class="skill-tag">Redis</span>
+            </div>
+          </div>
 
-                <div class="job-item">
-                    <div class="job-header">
-                        <span class="job-role">Senior Software Engineer</span>
-                        <span class="job-date">APR 2017 – PRESENT</span>
-                    </div>
-                    <div class="job-company">Emerson</div>
-                    <div class="job-details">
-                        <ul>
-                            <li><strong>Framework Modernization:</strong> Architected the transition of a legacy C# WPF
-                                desktop framework into an Angular/TypeScript web platform, achieving near-perfect
-                                feature parity over a 4-year solo project.</li>
-                            <li><strong>Strategic Tech Debt Resolution:</strong> Refactored massive legacy codebases to
-                                resolve ~60% of technical debt; introduced domain-driven architecture and rigorous
-                                testing (Vitest/Jest).</li>
-                            <li><strong>Engineering Leadership:</strong> Oversaw a modernization squad; developed
-                                reusable integration and design systems leveraging Angular, TypeScript, and modern CSS
-                                frameworks.</li>
-                            <li><strong>DevOps Modernization:</strong> Led full SVN-to-Git migration across complex
-                                monorepos; implemented Docker-based containerization and automated Azure CI/CD
-                                pipelines.</li>
-                            <li><strong>AI Integration & Governance:</strong> Established best practices for GitHub
-                                Copilot usage via custom tooling and training. Championed modern PR review workflows.
-                            </li>
-                            <li><strong>Systems Performance:</strong> Developed high-throughput C# simulation engines
-                                for industrial engineering; iterated on UX via deep user research.</li>
-                        </ul>
-                    </div>
-                </div>
+          <div class="skill-row">
+            <span class="skill-row-title">AI Systems:</span>
+            <div class="skill-row-tags">
+              <span class="skill-tag expert">RAG Architect</span>
+              <span class="skill-tag expert">Prompt Eng</span>
+              <span class="skill-tag expert">Cursor</span>
+              <span class="skill-tag">LangChain</span>
+              <span class="skill-tag">Copilot</span>
+              <span class="skill-tag">Local LLMs</span>
+            </div>
+          </div>
 
-                <div class="job-item">
-                    <div class="job-header">
-                        <span class="job-role">Software Engineer</span>
-                        <span class="job-date">MAY 2012 – APR 2017</span>
-                    </div>
-                    <div class="job-company">Wood</div>
-                    <div class="job-details">
-                        <ul>
-                            <li><strong>Industrial Software Design:</strong> Built WPF MVVM applications for specialized
-                                Oil & Gas fluid dynamics simulation tooling.</li>
-                            <li><strong>Operational Efficiency:</strong> Streamlined complex engineering configurations
-                                through intuitive UI workflows, drastically reducing time-to-result for simulation runs.
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+          <div class="skill-row">
+            <span class="skill-row-title">DevOps:</span>
+            <div class="skill-row-tags">
+              <span class="skill-tag expert">Docker</span>
+              <span class="skill-tag expert">CI/CD</span>
+              <span class="skill-tag expert">Git</span>
+              <span class="skill-tag">Azure DevOps</span>
+              <span class="skill-tag">Linux Admin</span>
+            </div>
+          </div>
 
-            </section>
-
-            <!-- PERSONAL PROJECTS -->
-            <section>
-                <h3 class="section-title">AI & Systems Exploration</h3>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <span class="project-title">Jester</span>
-                        <span class="project-meta">LLM Framework</span>
-                    </div>
-                    <div class="job-details">
-                        <div class="project-desc">
-                            Advanced context-steered storytelling framework built on hybrid GraphRAG. Maintains 40+
-                            interconnected
-                            narratives with high consistency using 10,000 lines of custom markdown. Context is
-                            selectively
-                            included based on the current stage of the story generation. Zero code.
-                        </div>
-                        <div class="tech-stack">GraphRAG · Context Selection · LLM Multi-Agent System</div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <span class="project-title">Bernard</span>
-                        <span class="project-meta">Smart Assistant</span>
-                    </div>
-                    <div class="job-details">
-                        <div class="project-desc">
-                            Privacy-first family voice assistant utilizing LangChain and RAG. Integrates with Home
-                            Assistant APIs
-                            to provide kid-friendly, voice-controlled automations. Managed with a custom dashboard built
-                            on React.
-                            Uses ESPHome devices for voice ingress and media playback.
-                        </div>
-                        <div class="tech-stack">LangChain · Home Assistant · Voice Recognition · Local LLM</div>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <div class="project-header">
-                        <span class="project-title">Memoriae</span>
-                        <span class="project-meta">Knowledge Engine</span>
-                    </div>
-                    <div class="job-details">
-                        <div class="project-desc">
-                            Intelligent personal knowledge base with automated semantic tagging and organization via
-                            LLM. High-performance
-                            Redis-backed architecture for instant retrieval. Uses BullMQ for background processing.
-                        </div>
-                        <div class="tech-stack">Redis · Semantic Tagging · Node.js · LLM Enrichment · BullMQ</div>
-                    </div>
-                </div>
-
-            </section>
+          <div class="skill-row">
+            <span class="skill-row-title">Architecture:</span>
+            <div class="skill-row-tags">
+              <span class="skill-tag expert">UX Design</span>
+              <span class="skill-tag expert">Home Auto</span>
+              <span class="skill-tag">Tech Lead</span>
+              <span class="skill-tag">Agile</span>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <!-- SIDE COLUMN -->
-        <div class="side-col">
+      <!-- MAIN CONTENT -->
+      <div class="main-col">
+        <!-- SUMMARY -->
+        <section>
+          <h3 class="section-title">Professional Summary</h3>
+          <p>
+            Full-stack software engineer with 8+ years experience (Emerson,
+            Wood), specializing in high-performance C# simulations,
+            Angular-based web platforms, and resilient DevOps infrastructure.
+            Successfully led a 4-year initiative to modernize mission-critical
+            desktop systems into cloud-ready Angular environments, reducing
+            technical debt by 60%. Expert in architecting integration layers,
+            implementing automated testing cultures, and driving safe AI/Copilot
+            adoption within engineering workflows.
+          </p>
+        </section>
 
-            <!-- SKILLS -->
-            <section>
-                <h3 class="section-title">Global Skills</h3>
+        <!-- EXPERIENCE -->
+        <section>
+          <h3 class="section-title">Experience</h3>
 
-                <div class="skill-group">
-                    <h4>Core Languages</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag expert">TypeScript</span>
-                        <span class="skill-tag expert">C#</span>
-                        <span class="skill-tag expert">JavaScript</span>
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">Bash/Zsh</span>
-                    </div>
-                </div>
+          <div class="job-item">
+            <div class="job-header">
+              <span class="job-role">Senior Software Engineer</span>
+              <span class="job-date">APR 2017 – PRESENT</span>
+            </div>
+            <div class="job-company">Emerson</div>
+            <div class="job-details">
+              <ul>
+                <li>
+                  <strong>Framework Modernization:</strong> Architected the
+                  transition of a legacy C# WPF desktop framework into an
+                  Angular/TypeScript web platform, achieving near-perfect
+                  feature parity over a 4-year solo project.
+                </li>
+                <li>
+                  <strong>Strategic Tech Debt Resolution:</strong> Refactored
+                  massive legacy codebases to resolve ~60% of technical debt;
+                  introduced domain-driven architecture and rigorous testing
+                  (Vitest/Jest).
+                </li>
+                <li>
+                  <strong>Engineering Leadership:</strong> Oversaw a
+                  modernization squad; developed reusable integration and design
+                  systems leveraging Angular, TypeScript, and modern CSS
+                  frameworks.
+                </li>
+                <li>
+                  <strong>DevOps Modernization:</strong> Led full SVN-to-Git
+                  migration across complex monorepos; implemented Docker-based
+                  containerization and automated Azure CI/CD pipelines.
+                </li>
+                <li>
+                  <strong>AI Integration & Governance:</strong> Established best
+                  practices for GitHub Copilot usage via custom tooling and
+                  training. Championed modern PR review workflows.
+                </li>
+                <li>
+                  <strong>Systems Performance:</strong> Developed
+                  high-throughput C# simulation engines for industrial
+                  engineering; iterated on UX via deep user research.
+                </li>
+              </ul>
+            </div>
+          </div>
 
-                <div class="skill-group">
-                    <h4>Frontend Mastery</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag expert">Angular</span>
-                        <span class="skill-tag expert">HTML5/CSS3</span>
-                        <span class="skill-tag expert">WPF</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">SASS</span>
-                    </div>
-                </div>
+          <div class="job-item">
+            <div class="job-header">
+              <span class="job-role">Software Engineer</span>
+              <span class="job-date">MAY 2012 – APR 2017</span>
+            </div>
+            <div class="job-company">Wood</div>
+            <div class="job-details">
+              <ul>
+                <li>
+                  <strong>Industrial Software Design:</strong> Built WPF MVVM
+                  applications for specialized Oil & Gas fluid dynamics
+                  simulation tooling.
+                </li>
+                <li>
+                  <strong>Operational Efficiency:</strong> Streamlined complex
+                  engineering configurations through intuitive UI workflows,
+                  drastically reducing time-to-result for simulation runs.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
 
-                <div class="skill-group">
-                    <h4>Backend & Platform</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag expert">Node.js</span>
-                        <span class="skill-tag expert">REST API</span>
-                        <span class="skill-tag expert">Vector DB</span>
-                        <span class="skill-tag">Microservices</span>
-                        <span class="skill-tag">Redis</span>
-                    </div>
-                </div>
+        <!-- PERSONAL PROJECTS -->
+        <section>
+          <h3 class="section-title">AI & Systems Exploration</h3>
 
-                <div class="skill-group">
-                    <h4>AI / Intelligent Systems</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag expert">RAG Architect</span>
-                        <span class="skill-tag expert">Prompt Eng</span>
-                        <span class="skill-tag expert">Cursor</span>
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">Copilot</span>
-                        <span class="skill-tag">Local LLMs</span>
-                    </div>
-                </div>
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">Jester</span>
+              <span class="project-meta">LLM Framework</span>
+            </div>
+            <div class="job-details">
+              <div class="project-desc">
+                Advanced context-steered storytelling framework built on hybrid
+                GraphRAG. Maintains 40+ interconnected narratives with high
+                consistency using 10,000 lines of custom markdown. Context is
+                selectively included based on the current stage of the story
+                generation. Zero code.
+              </div>
+              <div class="tech-stack">
+                GraphRAG · Context Selection · LLM Multi-Agent System
+              </div>
+            </div>
+          </div>
 
-                <div class="skill-group">
-                    <h4>DevOps Excellence</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag expert">Docker</span>
-                        <span class="skill-tag expert">CI/CD</span>
-                        <span class="skill-tag expert">Git</span>
-                        <span class="skill-tag">Azure DevOps</span>
-                        <span class="skill-tag">Linux Admin</span>
-                    </div>
-                </div>
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">Bernard</span>
+              <span class="project-meta">Smart Assistant</span>
+            </div>
+            <div class="job-details">
+              <div class="project-desc">
+                Privacy-first family voice assistant utilizing LangChain and
+                RAG. Integrates with Home Assistant APIs to provide
+                kid-friendly, voice-controlled automations. Managed with a
+                custom dashboard built on React. Uses ESPHome devices for voice
+                ingress and media playback.
+              </div>
+              <div class="tech-stack">
+                LangChain · Home Assistant · Voice Recognition · Local LLM
+              </div>
+            </div>
+          </div>
 
-                <div class="skill-group">
-                    <h4>Architecture</h4>
-                    <div class="skill-list">
-                        <span class="skill-tag expert">UX Design</span>
-                        <span class="skill-tag expert">Home Auto</span>
-                        <span class="skill-tag">Tech Lead</span>
-                        <span class="skill-tag">Agile</span>
-                    </div>
-                </div>
+          <div class="project-item">
+            <div class="project-header">
+              <span class="project-title">Memoriae</span>
+              <span class="project-meta">Knowledge Engine</span>
+            </div>
+            <div class="job-details">
+              <div class="project-desc">
+                Intelligent personal knowledge base with automated semantic
+                tagging and organization via LLM. High-performance Redis-backed
+                architecture for instant retrieval. Uses BullMQ for background
+                processing.
+              </div>
+              <div class="tech-stack">
+                Redis · Semantic Tagging · Node.js · LLM Enrichment · BullMQ
+              </div>
+            </div>
+          </div>
+        </section>
 
-            </section>
-
-            <!-- EDUCATION -->
-            <section>
-                <h3 class="section-title">Education</h3>
-                <div class="edu-item">
-                    <div class="edu-degree">B.S. Computer Science</div>
-                    <div class="edu-school">University of Houston</div>
-                    <div class="edu-year">Graduated 2012</div>
-                    <div class="tech-stack">Minor in Mathematics</div>
-                </div>
-            </section>
-
-        </div>
+        <!-- EDUCATION -->
+        <section>
+          <h3 class="section-title">Education</h3>
+          <div class="edu-item">
+            <div class="edu-degree">B.S. Computer Science</div>
+            <div class="edu-school">University of Houston</div>
+            <div class="edu-year">Graduated 2012</div>
+            <div class="tech-stack">Minor in Mathematics</div>
+          </div>
+        </section>
+      </div>
     </div>
 
-
-
     <script>
-        lucide.createIcons();
+      lucide.createIcons();
     </script>
-</body>
-
+  </body>
 </html>

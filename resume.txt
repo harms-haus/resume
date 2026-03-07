@@ -1,0 +1,67 @@
+# Blake Harms
+## Senior Software Engineer & AI enthusiast
+
+- **Email:** blake@harms.haus
+- **Phone:** (713) 702-9498
+- **Location:** Katy, Texas
+- **LinkedIn:** [linkedin.com/in/blake-harms-7263bb118](https://linkedin.com/in/blake-harms-7263bb118)
+
+---
+
+### Professional Summary
+Full-stack software engineer with 8+ years experience (Emerson, Wood), specializing in high-performance C# simulations, Angular-based web platforms, and resilient DevOps infrastructure. Successfully led a 4-year initiative to modernize mission-critical desktop systems into cloud-ready Angular environments, reducing technical debt by 60%. Expert in architecting integration layers, implementing automated testing cultures, and driving safe AI/Copilot adoption within engineering workflows.
+
+---
+
+### Experience
+
+#### Senior Software Engineer | Emerson
+*APR 2017 – PRESENT*
+
+- **Framework Modernization:** Architected the transition of a legacy C# WPF desktop framework into an Angular/TypeScript web platform, achieving near-perfect feature parity over a 4-year solo project.
+- **Strategic Tech Debt Resolution:** Refactored massive legacy codebases to resolve ~60% of technical debt; introduced domain-driven architecture and rigorous testing (Vitest/Jest).
+- **Engineering Leadership:** Oversaw a modernization squad; developed reusable integration and design systems leveraging Angular, TypeScript, and modern CSS frameworks.
+- **DevOps Modernization:** Led full SVN-to-Git migration across complex monorepos; implemented Docker-based containerization and automated Azure CI/CD pipelines.
+- **AI Integration & Governance:** Established best practices for GitHub Copilot usage via custom tooling and training. Championed modern PR review workflows.
+- **Systems Performance:** Developed high-throughput C# simulation engines for industrial engineering; iterated on UX via deep user research.
+
+#### Software Engineer | Wood
+*MAY 2012 – APR 2017*
+
+- **Industrial Software Design:** Built WPF MVVM applications for specialized Oil & Gas fluid dynamics simulation tooling.
+- **Operational Efficiency:** Streamlined complex engineering configurations through intuitive UI workflows, drastically reducing time-to-result for simulation runs.
+
+---
+
+### AI & Systems Exploration
+
+#### Jester | LLM Framework
+Advanced context-steered storytelling framework built on hybrid GraphRAG. Maintains 40+ interconnected narratives with high consistency using 10,000 lines of custom markdown. Context is selectively included based on the current stage of the story generation. Zero code.
+- **Tech Cache:** GraphRAG · Context Selection · LLM Multi-Agent System
+
+#### Bernard | Smart Assistant
+Privacy-first family voice assistant utilizing LangChain and RAG. Integrates with Home Assistant APIs to provide kid-friendly, voice-controlled automations. Managed with a custom dashboard built on React. Uses ESPHome devices for voice ingress and media playback.
+- **Tech Cache:** LangChain · Home Assistant · Voice Recognition · Local LLM
+
+#### Memoriae | Knowledge Engine
+Intelligent personal knowledge base with automated semantic tagging and organization via LLM. High-performance Redis-backed architecture for instant retrieval. Uses BullMQ for background processing.
+- **Tech Cache:** Redis · Semantic Tagging · Node.js · LLM Enrichment · BullMQ
+
+---
+
+### Global Skills
+
+- **Core Languages:** TypeScript, C#, JavaScript, Python, SQL, Bash/Zsh
+- **Frontend Mastery:** Angular, HTML5/CSS3, WPF, React, SASS
+- **Backend & Platform:** Node.js, REST API, Vector DB, Microservices, Redis
+- **AI / Intelligent Systems:** RAG Architect, Prompt Eng, Cursor, LangChain, Copilot, Local LLMs
+- **DevOps Excellence:** Docker, CI/CD, Git, Azure DevOps, Linux Admin
+- **Architecture:** UX Design, Home Auto, Tech Lead, Agile
+
+---
+
+### Education
+
+#### B.S. Computer Science
+*University of Houston | Graduated 2012*
+- Minor in Mathematics
