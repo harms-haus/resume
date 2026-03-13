@@ -5,6 +5,8 @@
 - **Phone:** (713) 702-9498
 - **Location:** Katy, Texas
 - **LinkedIn:** [linkedin.com/in/blake-harms-7263bb118](https://linkedin.com/in/blake-harms-7263bb118)
+- **GitHub:** [github.com/harms-haus](https://github.com/harms-haus)
+- **Live Site:** [harms-haus.github.io/resume](https://harms-haus.github.io/resume/)
 
 ---
 
@@ -47,11 +49,19 @@ Privacy-first family voice assistant utilizing LangChain and RAG. Integrates wit
 Intelligent personal knowledge base with automated semantic tagging and organization via LLM. High-performance Redis-backed architecture for instant retrieval. Uses BullMQ for background processing.
 - **Tech Cache:** Redis · Semantic Tagging · Node.js · LLM Enrichment · BullMQ
 
+#### Bifrost | AI Agent Issue Manager
+AI agent issue manager that turns plans into "runes" (issues) with hierarchical sagas, branch names, and dependencies. Built with Golang CLI/server and React UI (with Golang test version).
+- **Tech Cache:** Golang · React · CLI · AI Agent System
+
+#### Ymir | Workspace Manager
+Rust (Tauri)/React web and desktop app to manage terminal tabs, browser tabs, and editors in workspaces. Features worktree support for sub-workspaces, secure websockets, and both web/Tauri access.
+- **Tech Cache:** Rust · Tauri · React · WebSockets · Workspace Management
+
 ---
 
 ### Global Skills
 
-- **Core Languages:** TypeScript, C#, JavaScript, Python, SQL, Bash/Zsh
+- **Core Languages:** TypeScript, C#, JavaScript, Python, SQL, Bash/Zsh, Rust, Golang
 - **Frontend Mastery:** Angular, HTML5/CSS3, WPF, React, SASS
 - **Backend & Platform:** Node.js, REST API, Vector DB, Microservices, Redis
 - **AI / Intelligent Systems:** RAG Architect, Prompt Eng, Cursor, LangChain, Copilot, Local LLMs

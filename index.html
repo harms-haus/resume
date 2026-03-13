@@ -1,873 +1,1244 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Blake Harms · Resume</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --font-family: "Space Grotesk", "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
-            --bg: #f5f5f0;
-            --bg-soft: #fbfbf7;
-            --fg: #071833;
-            --muted: #2e3f5f;
-            --panel: #ffffff;
-            --panel-soft: #f8f9fb;
-            --navy: #0b2447;
-            --gold: #f4c95d;
-            --accent-gradient: linear-gradient(135deg, #0b3d91, #f4c95d);
-            --shadow-color: rgba(7, 24, 51, 0.18);
-            --shadow-sharp: 10px 10px 0 var(--shadow-color);
-            --shadow-sharp-hover: 14px 14px 0 var(--shadow-color);
-            --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+      :root {
+        --font-family:
+          "Space Grotesk", "Inter", "Segoe UI", system-ui, -apple-system,
+          sans-serif;
+        --bg: #f5f5f0;
+        --bg-soft: #fbfbf7;
+        --fg: #071833;
+        --muted: #2e3f5f;
+        --panel: #ffffff;
+        --panel-soft: #f8f9fb;
+        --navy: #0b2447;
+        --gold: #f4c95d;
+        --accent-gradient: linear-gradient(135deg, #0b3d91, #f4c95d);
+        --shadow-color: rgba(7, 24, 51, 0.18);
+        --shadow-sharp: 10px 10px 0 var(--shadow-color);
+        --shadow-sharp-hover: 14px 14px 0 var(--shadow-color);
+        --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
 
-        [data-theme="dark"] {
-            --bg: #0f0f0f;
-            --bg-soft: #081226;
-            --fg: #e7e7e7;
-            --muted: #b6c4e0;
-            --panel: #081328;
-            --panel-soft: #0b1931;
-            --shadow-color: rgba(0, 0, 0, 0.6);
-            --shadow-sharp: 10px 10px 0 var(--shadow-color);
-            --shadow-sharp-hover: 14px 14px 0 var(--shadow-color);
-        }
+      [data-theme="dark"] {
+        --bg: #0f0f0f;
+        --bg-soft: #081226;
+        --fg: #e7e7e7;
+        --muted: #b6c4e0;
+        --panel: #081328;
+        --panel-soft: #0b1931;
+        --shadow-color: rgba(0, 0, 0, 0.6);
+        --shadow-sharp: 10px 10px 0 var(--shadow-color);
+        --shadow-sharp-hover: 14px 14px 0 var(--shadow-color);
+      }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
 
-        body {
-            font-family: var(--font-family);
-            background: radial-gradient(circle at top, rgba(244, 201, 93, 0.05), transparent 55%), var(--bg);
-            color: var(--fg);
-            line-height: 1.6;
-            min-height: 100vh;
-            transition: background var(--transition), color var(--transition);
-        }
+      body {
+        font-family: var(--font-family);
+        background:
+          radial-gradient(
+            circle at top,
+            rgba(244, 201, 93, 0.05),
+            transparent 55%
+          ),
+          var(--bg);
+        color: var(--fg);
+        line-height: 1.6;
+        min-height: 100vh;
+        transition:
+          background var(--transition),
+          color var(--transition);
+      }
 
-        body::before {
-            content: "";
-            position: fixed;
-            inset: 0;
-            z-index: -1;
-            background: radial-gradient(circle at 10% 20%, rgba(244, 201, 93, 0.08), transparent 35%),
-                        radial-gradient(circle at 80% 0%, rgba(11, 61, 145, 0.15), transparent 40%),
-                        linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 65%);
-            opacity: 0.65;
-        }
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        background:
+          radial-gradient(
+            circle at 10% 20%,
+            rgba(244, 201, 93, 0.08),
+            transparent 35%
+          ),
+          radial-gradient(
+            circle at 80% 0%,
+            rgba(11, 61, 145, 0.15),
+            transparent 40%
+          ),
+          linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 65%);
+        opacity: 0.65;
+      }
 
+      .page {
+        width: min(1100px, calc(100% - 2.5rem));
+        margin: 0 auto;
+        padding: 2.5rem 0 3rem;
+      }
+
+      .hero {
+        display: grid;
+        gap: 1.5rem;
+        padding: 2.5rem;
+        background: var(--panel);
+        box-shadow: var(--shadow-sharp);
+        position: relative;
+        overflow: hidden;
+        border-radius: 0;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: 1.5rem;
+        border: 1px solid rgba(244, 201, 93, 0.2);
+        pointer-events: none;
+      }
+
+      .hero__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .hero__identity h1 {
+        font-size: clamp(2.4rem, 4vw, 3.4rem);
+        letter-spacing: -0.04em;
+      }
+
+      .hero__identity p {
+        color: var(--muted);
+        font-size: 1rem;
+        margin-top: 0.4rem;
+      }
+
+      .theme-toggle {
+        border: 1px solid rgba(7, 24, 51, 0.2);
+        background: var(--bg-soft);
+        color: var(--fg);
+        width: 3rem;
+        height: 3rem;
+        display: grid;
+        place-content: center;
+        cursor: pointer;
+        transition:
+          background var(--transition),
+          color var(--transition),
+          border var(--transition);
+        border-radius: 0;
+        box-shadow: var(--shadow-sharp);
+      }
+
+      [data-theme="dark"] .theme-toggle {
+        border: 1px solid rgba(246, 248, 255, 0.25);
+      }
+
+      .theme-toggle:hover {
+        transform: translateY(-2px) translateX(-2px);
+        box-shadow: var(--shadow-sharp-hover);
+      }
+
+      .theme-toggle svg {
+        width: 1.25rem;
+        height: 1.25rem;
+      }
+
+      .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 0.75rem 2rem;
+      }
+
+      .contact-item {
+        color: var(--muted);
+        font-size: 0.95rem;
+        letter-spacing: 0.02em;
+      }
+
+      .contact-item a {
+        color: inherit;
+        text-decoration: none;
+        transition: color var(--transition);
+      }
+
+      .contact-item a:hover {
+        color: var(--navy);
+        text-decoration: underline;
+      }
+
+      [data-theme="dark"] .contact-item a:hover {
+        color: var(--gold);
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        padding: 0.3rem 0.75rem;
+        background: rgba(11, 61, 145, 0.08);
+        color: var(--navy);
+        text-transform: uppercase;
+        font-size: 0.72rem;
+        letter-spacing: 0.12em;
+      }
+
+      [data-theme="dark"] .pill {
+        background: rgba(244, 201, 93, 0.12);
+        color: var(--gold);
+      }
+
+      main {
+        margin-top: 2.5rem;
+        display: grid;
+        gap: 2rem;
+      }
+
+      .section-heading {
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.28em;
+        color: var(--muted);
+        margin-bottom: 0.6rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.45rem, 3vw, 1.8rem);
+        margin-bottom: 1.25rem;
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+      }
+
+      .section-title::after {
+        content: "";
+        width: 60px;
+        height: 2px;
+        background: var(--accent-gradient);
+      }
+
+      .panel {
+        background: var(--panel);
+        padding: 2rem;
+        position: relative;
+        box-shadow: var(--shadow-sharp);
+        overflow: hidden;
+        border-radius: 0;
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease,
+          transform 0.6s ease;
+      }
+
+      .panel.is-visible {
+        opacity: 1;
+        transform: translateY(0) translateX(0);
+      }
+
+      .panel::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 8px;
+        background: var(--accent-gradient);
+        transform-origin: top;
+        transform: scaleY(0);
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .panel::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        height: 8px;
+        background: var(--accent-gradient);
+        transform-origin: left center;
+        transform: scaleX(0);
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .panel.accent-left::before {
+        left: 0;
+      }
+
+      .panel.accent-right::before {
+        right: 0;
+      }
+
+      .panel.accent-left::after {
+        display: none !important;
+      }
+      .panel.accent-right::after {
+        display: none !important;
+      }
+
+      .panel.accent-top::after {
+        top: 0;
+      }
+
+      .panel.accent-bottom::after {
+        bottom: 0;
+      }
+
+      .panel.accent-top::before {
+        display: none !important;
+      }
+      .panel.accent-bottom::before {
+        display: none !important;
+      }
+
+      .panel.is-visible::before {
+        transform: scaleY(1);
+      }
+
+      .panel.is-visible::after {
+        transform: scaleX(1);
+      }
+
+      .panel:hover {
+        translate: -2px -2px;
+        box-shadow: var(--shadow-sharp-hover);
+      }
+
+      .summary-text {
+        font-size: 1.05rem;
+        color: var(--muted);
+      }
+
+      .experience-grid {
+        display: grid;
+        gap: 1.5rem;
+      }
+
+      .experience-card h3 {
+        font-size: 1.4rem;
+        margin-bottom: 0.2rem;
+      }
+
+      .experience-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        font-size: 0.95rem;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+      }
+
+      .experience-pill {
+        margin-top: 1rem;
+        font-weight: 600;
+        color: var(--fg);
+      }
+
+      .experience-block {
+        margin-top: 1.2rem;
+      }
+
+      .experience-block h4 {
+        font-size: 0.95rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--navy);
+      }
+
+      [data-theme="dark"] .experience-block h4 {
+        color: var(--gold);
+      }
+
+      .experience-block ul {
+        list-style: none;
+        margin-top: 0.6rem;
+      }
+
+      .experience-block p {
+        margin-bottom: 0.8rem;
+      }
+
+      .experience-block p:last-child {
+        margin-bottom: 0;
+      }
+
+      .experience-block li {
+        position: relative;
+        padding-left: 1.5rem;
+        margin-bottom: 0.45rem;
+        color: var(--muted);
+      }
+
+      .experience-block li::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0.65rem;
+        width: 0.35rem;
+        height: 0.35rem;
+        background: var(--gold);
+      }
+
+      .skills-grid {
+        display: grid;
+        gap: 1rem;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      }
+
+      .skill-category h4 {
+        font-size: 1rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        margin-bottom: 0.8rem;
+        color: var(--fg);
+      }
+
+      .chip-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .chip {
+        padding: 0.35rem 0.85rem;
+        border: 1px solid rgba(7, 24, 51, 0.2);
+        color: var(--fg);
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        text-decoration: none;
+        display: inline-block;
+        transition: all var(--transition);
+      }
+
+      .chip:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 8px rgba(7, 24, 51, 0.15);
+        border-color: var(--navy);
+      }
+
+      [data-theme="dark"] .chip {
+        border-color: rgba(246, 248, 255, 0.3);
+        color: var(--muted);
+      }
+
+      [data-theme="dark"] .chip:hover {
+        border-color: var(--gold);
+        box-shadow: 0 4px 8px rgba(244, 201, 93, 0.2);
+      }
+
+      .chip-expert {
+        background: var(--accent-gradient);
+        color: white;
+        border: 1px solid transparent;
+        font-weight: 600;
+        box-shadow: 0 2px 8px rgba(11, 61, 145, 0.3);
+      }
+
+      .chip-expert:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(11, 61, 145, 0.4);
+      }
+
+      [data-theme="dark"] .chip-expert {
+        box-shadow: 0 2px 8px rgba(244, 201, 93, 0.4);
+      }
+
+      [data-theme="dark"] .chip-expert:hover {
+        box-shadow: 0 6px 12px rgba(244, 201, 93, 0.5);
+      }
+
+      [data-theme="dark"] .chip-expert {
+        color: black;
+      }
+
+      .education-card {
+        display: grid;
+        gap: 0.4rem;
+      }
+
+      .education-degree {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+
+      .education-meta {
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--muted);
+      }
+
+      .additional-list {
+        list-style: none;
+        display: grid;
+        gap: 0.75rem;
+        color: var(--muted);
+      }
+
+      .gradient-text {
+        background: var(--accent-gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      @media (max-width: 768px) {
         .page {
-            width: min(1100px, calc(100% - 2.5rem));
-            margin: 0 auto;
-            padding: 2.5rem 0 3rem;
+          width: calc(100% - 1.5rem);
+          padding-top: 1.5rem;
         }
 
         .hero {
-            display: grid;
-            gap: 1.5rem;
-            padding: 2.5rem;
-            background: var(--panel);
-            box-shadow: var(--shadow-sharp);
-            position: relative;
-            overflow: hidden;
-            border-radius: 0;
+          padding: 1.5rem;
         }
 
         .hero::after {
-            content: "";
-            position: absolute;
-            inset: 1.5rem;
-            border: 1px solid rgba(244, 201, 93, 0.2);
-            pointer-events: none;
+          inset: 1rem;
         }
 
         .hero__top {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1rem;
-        }
-
-        .hero__identity h1 {
-            font-size: clamp(2.4rem, 4vw, 3.4rem);
-            letter-spacing: -0.04em;
-        }
-
-        .hero__identity p {
-            color: var(--muted);
-            font-size: 1rem;
-            margin-top: 0.4rem;
-        }
-
-        .theme-toggle {
-            border: 1px solid rgba(7, 24, 51, 0.2);
-            background: var(--bg-soft);
-            color: var(--fg);
-            width: 3rem;
-            height: 3rem;
-            display: grid;
-            place-content: center;
-            cursor: pointer;
-            transition: background var(--transition), color var(--transition), border var(--transition);
-            border-radius: 0;
-            box-shadow: var(--shadow-sharp);
-        }
-
-        [data-theme="dark"] .theme-toggle {
-            border: 1px solid rgba(246, 248, 255, 0.25);
-        }
-
-        .theme-toggle:hover {
-            transform: translateY(-2px) translateX(-2px);
-            box-shadow: var(--shadow-sharp-hover);
-        }
-
-        .theme-toggle svg {
-            width: 1.25rem;
-            height: 1.25rem;
-        }
-
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 0.75rem 2rem;
-        }
-
-        .contact-item {
-            color: var(--muted);
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-        }
-
-        .contact-item a {
-            color: inherit;
-            text-decoration: none;
-            transition: color var(--transition);
-        }
-
-        .contact-item a:hover {
-            color: var(--navy);
-            text-decoration: underline;
-        }
-
-        [data-theme="dark"] .contact-item a:hover {
-            color: var(--gold);
-        }
-
-        .pill {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            padding: 0.3rem 0.75rem;
-            background: rgba(11, 61, 145, 0.08);
-            color: var(--navy);
-            text-transform: uppercase;
-            font-size: 0.72rem;
-            letter-spacing: 0.12em;
-        }
-
-        [data-theme="dark"] .pill {
-            background: rgba(244, 201, 93, 0.12);
-            color: var(--gold);
-        }
-
-        main {
-            margin-top: 2.5rem;
-            display: grid;
-            gap: 2rem;
-        }
-
-        .section-heading {
-            text-transform: uppercase;
-            font-size: 0.85rem;
-            letter-spacing: 0.28em;
-            color: var(--muted);
-            margin-bottom: 0.6rem;
-        }
-
-        .section-title {
-            font-size: clamp(1.45rem, 3vw, 1.8rem);
-            margin-bottom: 1.25rem;
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.65rem;
-        }
-
-        .section-title::after {
-            content: "";
-            width: 60px;
-            height: 2px;
-            background: var(--accent-gradient);
+          flex-direction: column;
+          align-items: flex-start;
         }
 
         .panel {
-            background: var(--panel);
-            padding: 2rem;
-            position: relative;
-            box-shadow: var(--shadow-sharp);
-            overflow: hidden;
-            border-radius: 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .panel.is-visible {
-            opacity: 1;
-            transform: translateY(0) translateX(0);
-        }
-
-        .panel::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            width: 8px;
-            background: var(--accent-gradient);
-            transform-origin: top;
-            transform: scaleY(0);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .panel::after {
-            content: "";
-            position: absolute;
-            left: 0;
-            right: 0;
-            height: 8px;
-            background: var(--accent-gradient);
-            transform-origin: left center;
-            transform: scaleX(0);
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .panel.accent-left::before {
-            left: 0;
-        }
-
-        .panel.accent-right::before {
-            right: 0;
-        }
-
-        .panel.accent-left::after {
-            display: none !important;
-        }
-        .panel.accent-right::after {
-          display: none !important;
-        }
-
-        .panel.accent-top::after {
-            top: 0;
-        }
-
-        .panel.accent-bottom::after {
-            bottom: 0;
-        }
-
-        .panel.accent-top::before {
-            display: none !important;
-        }
-        .panel.accent-bottom::before {
-            display: none !important;
-        }
-
-        .panel.is-visible::before {
-            transform: scaleY(1);
-        }
-
-        .panel.is-visible::after {
-            transform: scaleX(1);
-        }
-
-        .panel:hover {
-            translate: -2px -2px;
-            box-shadow: var(--shadow-sharp-hover);
-        }
-
-        .summary-text {
-            font-size: 1.05rem;
-            color: var(--muted);
-        }
-
-        .experience-grid {
-            display: grid;
-            gap: 1.5rem;
-        }
-
-        .experience-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.2rem;
+          padding: 1.5rem;
         }
 
         .experience-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            font-size: 0.95rem;
-            color: var(--muted);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
+          flex-direction: column;
+          gap: 0.4rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          transition: none !important;
+          animation: none !important;
         }
 
-        .experience-pill {
-            margin-top: 1rem;
-            font-weight: 600;
-            color: var(--fg);
+        .panel {
+          opacity: 1 !important;
+          transform: none !important;
         }
 
-        .experience-block {
-            margin-top: 1.2rem;
+        .panel::before {
+          transform: scaleY(1) !important;
         }
-
-        .experience-block h4 {
-            font-size: 0.95rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            color: var(--navy);
-        }
-
-        [data-theme="dark"] .experience-block h4 {
-            color: var(--gold);
-        }
-
-        .experience-block ul {
-            list-style: none;
-            margin-top: 0.6rem;
-        }
-
-        .experience-block p {
-            margin-bottom: 0.8rem;
-        }
-
-        .experience-block p:last-child {
-            margin-bottom: 0;
-        }
-
-        .experience-block li {
-            position: relative;
-            padding-left: 1.5rem;
-            margin-bottom: 0.45rem;
-            color: var(--muted);
-        }
-
-        .experience-block li::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 0.65rem;
-            width: 0.35rem;
-            height: 0.35rem;
-            background: var(--gold);
-        }
-
-        .skills-grid {
-            display: grid;
-            gap: 1rem;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        }
-
-        .skill-category h4 {
-            font-size: 1rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            margin-bottom: 0.8rem;
-            color: var(--fg);
-        }
-
-        .chip-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
-        .chip {
-            padding: 0.35rem 0.85rem;
-            border: 1px solid rgba(7, 24, 51, 0.2);
-            color: var(--fg);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            text-decoration: none;
-            display: inline-block;
-            transition: all var(--transition);
-        }
-
-        .chip:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 8px rgba(7, 24, 51, 0.15);
-            border-color: var(--navy);
-        }
-
-        [data-theme="dark"] .chip {
-            border-color: rgba(246, 248, 255, 0.3);
-            color: var(--muted);
-        }
-
-        [data-theme="dark"] .chip:hover {
-            border-color: var(--gold);
-            box-shadow: 0 4px 8px rgba(244, 201, 93, 0.2);
-        }
-
-        .chip-expert {
-            background: var(--accent-gradient);
-            color: white;
-            border: 1px solid transparent;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(11, 61, 145, 0.3);
-        }
-
-        .chip-expert:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(11, 61, 145, 0.4);
-        }
-
-        [data-theme="dark"] .chip-expert {
-            box-shadow: 0 2px 8px rgba(244, 201, 93, 0.4);
-        }
-
-        [data-theme="dark"] .chip-expert:hover {
-            box-shadow: 0 6px 12px rgba(244, 201, 93, 0.5);
-        }
-
-        [data-theme="dark"] .chip-expert {
-            color: black;
-        }
-
-        .education-card {
-            display: grid;
-            gap: 0.4rem;
-        }
-
-        .education-degree {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .education-meta {
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--muted);
-        }
-
-        .additional-list {
-            list-style: none;
-            display: grid;
-            gap: 0.75rem;
-            color: var(--muted);
-        }
-
-        .gradient-text {
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-fill-color: transparent;
-        }
-
-        @media (max-width: 768px) {
-            .page {
-                width: calc(100% - 1.5rem);
-                padding-top: 1.5rem;
-            }
-
-            .hero {
-                padding: 1.5rem;
-            }
-
-            .hero::after {
-                inset: 1rem;
-            }
-
-            .hero__top {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .panel {
-                padding: 1.5rem;
-            }
-
-            .experience-meta {
-                flex-direction: column;
-                gap: 0.4rem;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                transition: none !important;
-                animation: none !important;
-            }
-
-            .panel {
-                opacity: 1 !important;
-                transform: none !important;
-            }
-
-            .panel::before {
-                transform: scaleY(1) !important;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="page">
-        <header class="hero accent-left panel is-visible">
-            <div class="hero__top">
-                <div class="hero__identity">
-                    <div class="pill">Senior Software Engineer</div>
-                    <h1>Blake Harms</h1>
-                    <p>Katy, Texas · Full-stack, simulations, DevOps</p>
-                </div>
-                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-                    <svg id="themeIcon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <circle cx="12" cy="12" r="4" fill="currentColor"/>
-                        <circle cx="12" cy="3" r="1.5" fill="currentColor"/>
-                        <circle cx="12" cy="21" r="1.5" fill="currentColor"/>
-                        <circle cx="3" cy="12" r="1.5" fill="currentColor"/>
-                        <circle cx="21" cy="12" r="1.5" fill="currentColor"/>
-                        <circle cx="6.879" cy="6.879" r="1.5" fill="currentColor"/>
-                        <circle cx="17.121" cy="6.879" r="1.5" fill="currentColor"/>
-                        <circle cx="6.879" cy="17.121" r="1.5" fill="currentColor"/>
-                        <circle cx="17.121" cy="17.121" r="1.5" fill="currentColor"/>
-                    </svg>
-                </button>
-            </div>
-            <div class="contact-grid">
-                <div class="contact-item">Katy, Texas</div>
-                <div class="contact-item"><a href="tel:+17137029498">(713) 702-9498</a></div>
-                <div class="contact-item"><a href="mailto:blake@harms.haus">blake@harms.haus</a></div>
-                <div class="contact-item"><a href="https://linkedin.com/in/blake-harms-7263bb118">linkedin.com/in/blake-harms-7263bb118</a></div>
-            </div>
+      <header class="hero accent-left panel is-visible">
+        <div class="hero__top">
+          <div class="hero__identity">
+            <div class="pill">Senior Software Engineer</div>
+            <h1>Blake Harms</h1>
+            <p>Katy, Texas · Full-stack, simulations, DevOps</p>
+          </div>
+          <button
+            class="theme-toggle"
+            id="themeToggle"
+            aria-label="Toggle theme"
+            type="button"
+          >
+            <svg
+              id="themeIcon"
+              viewBox="0 0 24 24"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <circle cx="12" cy="12" r="4" fill="currentColor" />
+              <circle cx="12" cy="3" r="1.5" fill="currentColor" />
+              <circle cx="12" cy="21" r="1.5" fill="currentColor" />
+              <circle cx="3" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="21" cy="12" r="1.5" fill="currentColor" />
+              <circle cx="6.879" cy="6.879" r="1.5" fill="currentColor" />
+              <circle cx="17.121" cy="6.879" r="1.5" fill="currentColor" />
+              <circle cx="6.879" cy="17.121" r="1.5" fill="currentColor" />
+              <circle cx="17.121" cy="17.121" r="1.5" fill="currentColor" />
+            </svg>
+          </button>
+        </div>
+        <div class="contact-grid">
+          <div class="contact-item">Katy, Texas</div>
+          <div class="contact-item">
+            <a href="tel:+17137029498">(713) 702-9498</a>
+          </div>
+          <div class="contact-item">
+            <a href="mailto:blake@harms.haus">blake@harms.haus</a>
+          </div>
+          <div class="contact-item">
+            <a href="https://linkedin.com/in/blake-harms-7263bb118"
+              >linkedin.com/in/blake-harms-7263bb118</a
+            >
+          </div>
+          <div class="contact-item">
+            <a href="https://github.com/harms-haus">github.com/harms-haus</a>
+          </div>
+          <div class="contact-item">
+            <a href="https://harms-haus.github.io/resume/"
+              >harms-haus.github.io/resume</a
+            >
+          </div>
+        </div>
+        <p class="summary-text">
+          Full-stack software engineer with 8+ years at Emerson delivering
+          high-performance C# simulations, Angular/TypeScript frameworks, and
+          resilient DevOps infrastructure. Drives modernization, testing
+          culture, and AI-assisted workflows with hands-on leadership.
+        </p>
+      </header>
+
+      <main>
+        <section>
+          <div class="section-heading">Profile</div>
+          <h2 class="section-title">Professional Summary</h2>
+          <article class="panel accent-right" data-animate>
             <p class="summary-text">
-                Full-stack software engineer with 8+ years at Emerson delivering high-performance C# simulations, Angular/TypeScript frameworks, and resilient DevOps infrastructure. Drives modernization, testing culture, and AI-assisted workflows with hands-on leadership.
+              Led the 4-year modernization of a mission-critical C# WPF
+              framework into a near feature-parity Angular/TypeScript platform,
+              cutting technical debt by 60% and instituting domain-driven
+              structures, automated testing, and modern collaboration practices.
+              Trusted to architect integration layers, design systems, CI/CD
+              pipelines, and safe Copilot adoption strategies while mentoring
+              teams through transformation.
             </p>
-        </header>
+          </article>
+        </section>
 
-        <main>
-            <section>
-                <div class="section-heading">Profile</div>
-                <h2 class="section-title">Professional Summary</h2>
-                <article class="panel accent-right" data-animate>
-                    <p class="summary-text">
-                        Led the 4-year modernization of a mission-critical C# WPF framework into a near feature-parity Angular/TypeScript platform, cutting technical debt by 60% and instituting domain-driven structures, automated testing, and modern collaboration practices. Trusted to architect integration layers, design systems, CI/CD pipelines, and safe Copilot adoption strategies while mentoring teams through transformation.
-                    </p>
-                </article>
-            </section>
+        <section>
+          <div class="section-heading">Experience</div>
+          <h2 class="section-title">Professional Engagements</h2>
+          <div class="experience-grid">
+            <article class="panel accent-left experience-card" data-animate>
+              <h3>Senior Software Engineer</h3>
+              <div class="experience-meta">
+                <span>Emerson</span>
+                <span>April 2017 – Present</span>
+              </div>
 
-            <section>
-                <div class="section-heading">Experience</div>
-                <h2 class="section-title">Professional Engagements</h2>
-                <div class="experience-grid">
-                    <article class="panel accent-left experience-card" data-animate>
-                        <h3>Senior Software Engineer</h3>
-                        <div class="experience-meta">
-                            <span>Emerson</span>
-                            <span>April 2017 – Present</span>
-                        </div>
+              <div class="experience-block">
+                <h4>Framework Modernization & Web Migration</h4>
+                <ul>
+                  <li>
+                    Rebuilt a legacy C# WPF desktop framework into an
+                    Angular/TypeScript web platform with near-zero functional
+                    loss after a 4-year solo initiative.
+                  </li>
+                  <li>
+                    Refactored codebases to resolve ~60% of technical debt,
+                    introducing unit tests and domain-based architectures.
+                  </li>
+                  <li>
+                    Transitioned into team lead overseeing continued
+                    modernization with an expanded engineering squad.
+                  </li>
+                  <li>
+                    Architected reusable integration and design systems using
+                    Angular, TypeScript, and SASS/CSS3.
+                  </li>
+                </ul>
+              </div>
 
-                        <div class="experience-block">
-                            <h4>Framework Modernization & Web Migration</h4>
-                            <ul>
-                                <li>Rebuilt a legacy C# WPF desktop framework into an Angular/TypeScript web platform with near-zero functional loss after a 4-year solo initiative.</li>
-                                <li>Refactored codebases to resolve ~60% of technical debt, introducing unit tests and domain-based architectures.</li>
-                                <li>Transitioned into team lead overseeing continued modernization with an expanded engineering squad.</li>
-                                <li>Architected reusable integration and design systems using Angular, TypeScript, and SASS/CSS3.</li>
-                            </ul>
-                        </div>
+              <div class="experience-block">
+                <h4>DevOps & Infrastructure</h4>
+                <ul>
+                  <li>
+                    Implemented Dockerized environments for consistent debugging
+                    and deployments across dev and prod.
+                  </li>
+                  <li>
+                    Orchestrated a full SVN-to-Git migration, preserving
+                    history, splitting monorepos, and training teams.
+                  </li>
+                  <li>
+                    Established Azure-backed CI/CD pipelines for automated
+                    build, test, and release flows.
+                  </li>
+                </ul>
+              </div>
 
-                        <div class="experience-block">
-                            <h4>DevOps & Infrastructure</h4>
-                            <ul>
-                                <li>Implemented Dockerized environments for consistent debugging and deployments across dev and prod.</li>
-                                <li>Orchestrated a full SVN-to-Git migration, preserving history, splitting monorepos, and training teams.</li>
-                                <li>Established Azure-backed CI/CD pipelines for automated build, test, and release flows.</li>
-                            </ul>
-                        </div>
+              <div class="experience-block">
+                <h4>Testing, Quality & AI Practices</h4>
+                <ul>
+                  <li>
+                    Instituted an automated testing framework and persuaded
+                    adoption despite cultural pushback.
+                  </li>
+                  <li>
+                    Championed modern Git workflows, PR reviews, and pair
+                    programming.
+                  </li>
+                  <li>
+                    Wrote scripts and guidance for safe GitHub Copilot usage,
+                    training engineers on best practices.
+                  </li>
+                </ul>
+              </div>
 
-                        <div class="experience-block">
-                            <h4>Testing, Quality & AI Practices</h4>
-                            <ul>
-                                <li>Instituted an automated testing framework and persuaded adoption despite cultural pushback.</li>
-                                <li>Championed modern Git workflows, PR reviews, and pair programming.</li>
-                                <li>Wrote scripts and guidance for safe GitHub Copilot usage, training engineers on best practices.</li>
-                            </ul>
-                        </div>
+              <div class="experience-block">
+                <h4>Engineering & Performance</h4>
+                <ul>
+                  <li>
+                    Developed high-performance C# simulations for complex
+                    engineering computations.
+                  </li>
+                  <li>
+                    Designed, tested, and iterated on WPF user experiences
+                    through user research and UX improvements.
+                  </li>
+                </ul>
+              </div>
+            </article>
 
-                        <div class="experience-block">
-                            <h4>Engineering & Performance</h4>
-                            <ul>
-                                <li>Developed high-performance C# simulations for complex engineering computations.</li>
-                                <li>Designed, tested, and iterated on WPF user experiences through user research and UX improvements.</li>
-                            </ul>
-                        </div>
-                    </article>
+            <article class="panel accent-right experience-card" data-animate>
+              <h3>Software Engineer</h3>
+              <div class="experience-meta">
+                <span>Wood</span>
+                <span>May 2012 – April 2017</span>
+              </div>
 
-                    <article class="panel accent-right experience-card" data-animate>
-                        <h3>Software Engineer</h3>
-                        <div class="experience-meta">
-                            <span>Wood</span>
-                            <span>May 2012 – April 2017</span>
-                        </div>
+              <div class="experience-block">
+                <h4>Utility Designer</h4>
+                <ul>
+                  <li>
+                    Delivered WPF MVVM applications for internal Oil & Gas fluid
+                    dynamics simulation tooling.
+                  </li>
+                  <li>
+                    Enabled engineers to configure and run complex simulations
+                    via tailored UI workflows.
+                  </li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </section>
 
-                        <div class="experience-block">
-                            <h4>Utility Designer</h4>
-                            <ul>
-                                <li>Delivered WPF MVVM applications for internal Oil & Gas fluid dynamics simulation tooling.</li>
-                                <li>Enabled engineers to configure and run complex simulations via tailored UI workflows.</li>
-                            </ul>
-                        </div>
-                    </article>
-                </div>
-            </section>
+        <section>
+          <div class="section-heading">Personal Projects</div>
+          <h2 class="section-title">AI Deep-Dive</h2>
+          <div class="experience-grid">
+            <article class="panel accent-left experience-card" data-animate>
+              <h3 class="gradient-text">Jester</h3>
+              <div class="experience-meta">
+                <span>AI Story Generation Framework</span>
+                <span>Context-Only Architecture</span>
+              </div>
 
-            <section>
-                <div class="section-heading">Personal Projects</div>
-                <h2 class="section-title">AI Deep-Dive</h2>
-                <div class="experience-grid">
-                    <article class="panel accent-left experience-card" data-animate>
-                        <h3 class="gradient-text">Jester</h3>
-                        <div class="experience-meta">
-                            <span>AI Story Generation Framework</span>
-                            <span>Context-Only Architecture</span>
-                        </div>
+              <div class="experience-block">
+                <p class="summary-text">
+                  A sophisticated context-only bedtime story writing framework
+                  powered by LLMs instructed with a set of rules, procedures and
+                  plans, featuring a hybrid GraphRAG backend that maintains 40+
+                  interconnected stories with Wikipedia-level detail about
+                  characters, locations, and events.
+                </p>
+                <p class="summary-text">
+                  The framework is designed to be used by myself to generate
+                  stories for my daughter with her input. The framework starts
+                  with a "context" that lists the characters, locations, and
+                  events that are relevant to the story. Next, it generates an
+                  outline which I then edit and refine. Finally, it writes the
+                  full story and I edit it to be sure there were no
+                  hallucinations.
+                </p>
+              </div>
 
-                        <div class="experience-block">
-                            <p class="summary-text">A sophisticated context-only bedtime story writing framework powered by LLMs instructed with a set of rules, procedures and plans, featuring a hybrid GraphRAG backend that maintains 40+ interconnected stories with Wikipedia-level detail about characters, locations, and events.</p>
-                            <p class="summary-text">The framework is designed to be used by myself to generate stories for my daughter with her input. The framework starts with a "context" that lists the characters, locations, and events that are relevant to the story. Next, it generates an outline which I then edit and refine. Finally, it writes the full story and I edit it to be sure there were no hallucinations.</p>
-                        </div>
+              <div class="chip-group">
+                <span class="chip">LLM-Powered</span>
+                <span class="chip">Hybrid GraphRAG</span>
+                <span class="chip">Cross-Linked Stories</span>
+                <span class="chip">Character-centered</span>
+              </div>
+            </article>
 
-                        <div class="chip-group">
-                            <span class="chip">LLM-Powered</span>
-                            <span class="chip">Hybrid GraphRAG</span>
-                            <span class="chip">Cross-Linked Stories</span>
-                            <span class="chip">Character-centered</span>
-                        </div>
-                    </article>
+            <article class="panel accent-right experience-card" data-animate>
+              <h3 class="gradient-text">Bernard</h3>
+              <div class="experience-meta">
+                <span>Home Voice Assistant</span>
+                <span>Privacy-First AI</span>
+              </div>
 
-                    <article class="panel accent-right experience-card" data-animate>
-                        <h3 class="gradient-text">Memoriae</h3>
-                        <div class="experience-meta">
-                            <span>Personal Knowledge System</span>
-                            <span>LLM-Enhanced Note Taking</span>
-                        </div>
+              <div class="experience-block">
+                <p class="summary-text">
+                  LangChain-powered voice assistant designed to replace Alexa
+                  for family use, emphasizing privacy and kid-friendly
+                  interactions.
+                </p>
+                <p class="summary-text">
+                  Integrates with Home Assistant to control smart home devices,
+                  searches web/Wikipedia, and can manage entertainment across
+                  multiple TVs.
+                </p>
+                <p class="summary-text">
+                  The assistant is managed with a web interface for user
+                  management, conversation history, and content moderation.
+                </p>
+                <p class="summary-text">
+                  The assistant has a RAG system to "remember" things about the
+                  family and the house.
+                </p>
+              </div>
 
-                        <div class="experience-block">
-                            <p class="summary-text">An intelligent note, memory, and idea recording system featuring LLM-based automatic tagging and content enhancement. Hosted locally with Redis backend for complete privacy and performance.</p>
-                            <p class="summary-text">Notes or "seeds" are "grown" by adding metadata and injecting content via LLM prompts. These are auto-categorized and tagged to be searchable.</p>
-                        </div>
+              <div class="experience-block">
+                <h4>Hardware & Features</h4>
+                <ul>
+                  <li>
+                    <a
+                      href="https://futureproofhomes.net"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >FutureProofHomes Satellite1</a
+                    >
+                    hardware integration via Home Assistant voice pipeline
+                  </li>
+                  <li>Multi-device ingestion</li>
+                  <li>Manages TV control and entertainment</li>
+                </ul>
+              </div>
 
-                        <div class="chip-group">
-                            <span class="chip">LLM-powered</span>
-                            <span class="chip">Enrichment</span>
-                            <span class="chip">Redis</span>
-                            <span class="chip">Self-Hosted</span>
-                        </div>
-                    </article>
+              <div class="chip-group">
+                <span class="chip">LangChain</span>
+                <span class="chip">Home Assistant</span>
+                <span class="chip">Voice Assistant</span>
+                <span class="chip">Privacy-Focused</span>
+                <span class="chip">Multi-point Ingestion</span>
+              </div>
+            </article>
 
-                    <article class="panel accent-left experience-card" data-animate>
-                        <h3 class="gradient-text">Bernard</h3>
-                        <div class="experience-meta">
-                            <span>Home Voice Assistant</span>
-                            <span>Privacy-First AI</span>
-                        </div>
+            <article class="panel accent-left experience-card" data-animate>
+              <h3 class="gradient-text">Bifrost</h3>
+              <div class="experience-meta">
+                <span>AI Agent Issue Manager</span>
+                <span>Golang/React System</span>
+              </div>
 
-                        <div class="experience-block">
-                            <p class="summary-text">LangChain-powered voice assistant designed to replace Alexa for family use, emphasizing privacy and kid-friendly interactions.</p>
-                            <p class="summary-text">Integrates with Home Assistant to control smart home devices, searches web/Wikipedia, and can manage entertainment across multiple TVs.</p>
-                            <p class="summary-text">The assistant is managed with a web interface for user management, conversation history, and content moderation.</p>
-                            <p class="summary-text">The assistant has a RAG system to "remember" things about the family and the house.</p>
-                        </div>
+              <div class="experience-block">
+                <p class="summary-text">
+                  AI agent issue manager that turns plans into "runes" (issues)
+                  with hierarchical sagas, branch names, and dependencies. Built
+                  with Golang CLI/server and React UI (with Golang test
+                  version).
+                </p>
+                <p class="summary-text">
+                  <a
+                    href="https://github.com/devzeebo/bifrost"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >github.com/devzeebo/bifrost</a
+                  >
+                </p>
+              </div>
 
-                        <div class="experience-block">
-                            <h4>Hardware & Features</h4>
-                            <ul>
-                                <li><a href="https://futureproofhomes.net" target="_blank" rel="noopener noreferrer">FutureProofHomes Satellite1</a> hardware integration via Home Assistant voice pipeline</li>
-                                <li>Multi-device ingestion</li>
-                                <li>Manages TV control and entertainment</li>
-                            </ul>
-                        </div>
+              <div class="chip-group">
+                <span class="chip">Golang</span>
+                <span class="chip">React</span>
+                <span class="chip">CLI</span>
+                <span class="chip">AI Agent System</span>
+              </div>
+            </article>
 
-                        <div class="chip-group">
-                            <span class="chip">LangChain</span>
-                            <span class="chip">Home Assistant</span>
-                            <span class="chip">Voice Assistant</span>
-                            <span class="chip">Privacy-Focused</span>
-                            <span class="chip">Multi-point Ingestion</span>
-                        </div>
-                    </article>
-                </div>
-            </section>
+            <article class="panel accent-right experience-card" data-animate>
+              <h3 class="gradient-text">Ymir</h3>
+              <div class="experience-meta">
+                <span>Workspace Manager</span>
+                <span>Rust/Tauri/React</span>
+              </div>
 
-            <section>
-                <div class="section-heading">Skills</div>
-                <h2 class="section-title">Technical Focus</h2>
-                <div class="skills-grid">
-                    <article class="panel accent-top skill-category" data-animate>
-                        <h4>Languages</h4>
-                        <div class="chip-group">
-                            <a href="https://www.typescriptlang.org/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">TypeScript</a>
-                            <a href="https://www.python.org/" target="_blank" rel="noopener noreferrer" class="chip">Python</a>
-                            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">C#</a>
-                            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" rel="noopener noreferrer" class="chip chip-expert">JavaScript</a>
-                            <a href="https://www.iso.org/standard/63555.html" target="_blank" rel="noopener noreferrer" class="chip">SQL</a>
-                            <a href="https://learn.microsoft.com/en-us/powershell/" target="_blank" rel="noopener noreferrer" class="chip">PowerShell</a>
-                            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noopener noreferrer" class="chip">Bash/Zsh</a>
-                        </div>
-                    </article>
-                    <article class="panel accent-bottom skill-category" data-animate>
-                        <h4>Frontend</h4>
-                        <div class="chip-group">
-                            <a href="https://angular.dev/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Angular</a>
-                            <a href="https://react.dev/" target="_blank" rel="noopener noreferrer" class="chip">React</a>
-                            <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">HTML5</a>
-                            <a href="https://www.w3.org/Style/CSS/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">CSS3</a>
-                            <a href="https://sass-lang.com/" target="_blank" rel="noopener noreferrer" class="chip">SASS</a>
-                            <a href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">WPF</a>
-                        </div>
-                    </article>
-                    <article class="panel accent-top skill-category" data-animate>
-                        <h4>Backend & APIs</h4>
-                        <div class="chip-group">
-                            <a href="https://nodejs.org/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Node.js</a>
-                            <span class="chip">C# simulations</span>
-                            <span class="chip chip-expert">REST API</span>
-                            <span class="chip">SignalR</span>
-                            <span class="chip">WebSockets</span>
-                            <span class="chip">Microservices</span>
-                        </div>
-                    </article>
-                    <article class="panel accent-bottom skill-category" data-animate>
-                        <h4>Databases</h4>
-                        <div class="chip-group">
-                            <a href="https://redis.io/" target="_blank" rel="noopener noreferrer" class="chip">Redis</a>
-                            <span class="chip chip-expert">Vector Databases</span>
-                            <span class="chip">Code Graphs</span>
-                            <span class="chip">Tree-sitting</span>
-                        </div>
-                    </article>
-                    <article class="panel accent-top skill-category" data-animate>
-                        <h4>DevOps & Infrastructure</h4>
-                        <div class="chip-group">
-                            <a href="https://www.docker.com/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Docker</a>
-                            <span class="chip" chip-expert>CI/CD</span>
-                            <a href="https://azure.microsoft.com/en-us/products/devops" target="_blank" rel="noopener noreferrer" class="chip">Azure DevOps</a>
-                            <a href="https://www.linux.org/" target="_blank" rel="noopener noreferrer" class="chip">Linux admin</a>
-                        </div>
-                    </article>
-                    <article class="panel accent-bottom skill-category" data-animate>
-                        <h4>Testing & Quality</h4>
-                        <div class="chip-group">
-                            <a href="https://jestjs.io/" target="_blank" rel="noopener noreferrer" class="chip">Jest</a>
-                            <a href="https://vitest.dev/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Vitest</a>
-                            <a href="https://playwright.dev/" target="_blank" rel="noopener noreferrer" class="chip">Playwright</a>
-                            <a href="https://xunit.net/" target="_blank" rel="noopener noreferrer" class="chip">xUnit</a>
-                            <a href="https://nsubstitute.github.io/" target="_blank" rel="noopener noreferrer" class="chip">NSubstitute</a>
-                        </div>
-                    </article>
-                    <article class="panel accent-top skill-category" data-animate>
-                        <h4>AI & ML</h4>
-                        <div class="chip-group">
-                            <a href="https://python.langchain.com/" target="_blank" rel="noopener noreferrer" class="chip">LangChain</a>
-                            <span class="chip">LLMs</span>
-                            <span class="chip chip-expert">RAG Systems</span>
-                            <span class="chip">Local AI</span>
-                            <span class="chip chip-expert">Prompt engineering</span>
-                            <a href="https://www.anthropic.com/claude" target="_blank" rel="noopener noreferrer" class="chip">Claude</a>
-                            <a href="https://github.com/features/copilot" target="_blank" rel="noopener noreferrer" class="chip">Copilot</a>
-                            <a href="https://cursor.sh/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Cursor</a>
-                        </div>
-                    </article>
-                    <article class="panel accent-bottom skill-category" data-animate>
-                        <h4>Architecture & Leadership</h4>
-                        <div class="chip-group">
-                            <span class="chip">Component architecture</span>
-                            <span class="chip">Technical leadership</span>
-                            <span class="chip">Agile delivery</span>
-                            <span class="chip chip-expert">UX design</span>
-                            <span class="chip">Voice Interfaces</span>
-                            <span class="chip chip-expert">Home Automation</span>
-                            <a href="https://git-scm.com/" target="_blank" rel="noopener noreferrer" class="chip chip-expert">Git</a>
-                            <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="chip">GitHub</a>
-                        </div>
-                    </article>
-                </div>
-            </section>
+              <div class="experience-block">
+                <p class="summary-text">
+                  Rust (Tauri)/React web and desktop app to manage terminal
+                  tabs, browser tabs, and editors in workspaces. Features
+                  worktree support for sub-workspaces, secure websockets, and
+                  both web/Tauri access.
+                </p>
+                <p class="summary-text">
+                  <a
+                    href="https://github.com/harms-haus/ymir"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >github.com/harms-haus/ymir</a
+                  >
+                </p>
+              </div>
 
-            <section>
-                <div class="section-heading">Education</div>
-                <h2 class="section-title">Academic Background</h2>
-                <article class="panel accent-left education-card" data-animate>
-                    <div class="education-degree">Bachelor of Science in Computer Science</div>
-                    <div class="education-meta">University of Houston · 2012</div>
-                    <div class="pill">Minor in Mathematics</div>
-                </article>
-            </section>
-        </main>
+              <div class="chip-group">
+                <span class="chip">Rust</span>
+                <span class="chip">Tauri</span>
+                <span class="chip">React</span>
+                <span class="chip">WebSockets</span>
+                <span class="chip">Workspace Management</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-heading">Skills</div>
+          <h2 class="section-title">Technical Focus</h2>
+          <div class="skills-grid">
+            <article class="panel accent-top skill-category" data-animate>
+              <h4>Languages</h4>
+              <div class="chip-group">
+                <a
+                  href="https://www.typescriptlang.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >TypeScript</a
+                >
+                <a
+                  href="https://www.python.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Python</a
+                >
+                <a
+                  href="https://learn.microsoft.com/en-us/dotnet/csharp/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >C#</a
+                >
+                <a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >JavaScript</a
+                >
+                <a
+                  href="https://www.iso.org/standard/63555.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >SQL</a
+                >
+                <a
+                  href="https://rust-lang.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Rust</a
+                >
+                <a
+                  href="https://go.dev"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Golang</a
+                >
+              </div>
+            </article>
+            <article class="panel accent-bottom skill-category" data-animate>
+              <h4>Frontend</h4>
+              <div class="chip-group">
+                <a
+                  href="https://angular.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >Angular</a
+                >
+                <a
+                  href="https://react.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >React</a
+                >
+                <a
+                  href="https://html.spec.whatwg.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >HTML5</a
+                >
+                <a
+                  href="https://www.w3.org/Style/CSS/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >CSS3</a
+                >
+                <a
+                  href="https://sass-lang.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >SASS</a
+                >
+                <a
+                  href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >WPF</a
+                >
+              </div>
+            </article>
+            <article class="panel accent-top skill-category" data-animate>
+              <h4>Backend & APIs</h4>
+              <div class="chip-group">
+                <a
+                  href="https://nodejs.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >Node.js</a
+                >
+                <span class="chip">C# simulations</span>
+                <span class="chip chip-expert">REST API</span>
+                <span class="chip">SignalR</span>
+                <span class="chip">WebSockets</span>
+                <span class="chip">Microservices</span>
+              </div>
+            </article>
+            <article class="panel accent-bottom skill-category" data-animate>
+              <h4>Databases</h4>
+              <div class="chip-group">
+                <a
+                  href="https://redis.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Redis</a
+                >
+                <span class="chip chip-expert">Vector Databases</span>
+                <span class="chip">Code Graphs</span>
+                <span class="chip">Tree-sitting</span>
+              </div>
+            </article>
+            <article class="panel accent-top skill-category" data-animate>
+              <h4>DevOps & Infrastructure</h4>
+              <div class="chip-group">
+                <a
+                  href="https://www.docker.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >Docker</a
+                >
+                <span class="chip" chip-expert>CI/CD</span>
+                <a
+                  href="https://azure.microsoft.com/en-us/products/devops"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Azure DevOps</a
+                >
+                <a
+                  href="https://www.linux.org/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Linux admin</a
+                >
+              </div>
+            </article>
+            <article class="panel accent-bottom skill-category" data-animate>
+              <h4>Testing & Quality</h4>
+              <div class="chip-group">
+                <a
+                  href="https://jestjs.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Jest</a
+                >
+                <a
+                  href="https://vitest.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >Vitest</a
+                >
+                <a
+                  href="https://playwright.dev/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Playwright</a
+                >
+                <a
+                  href="https://xunit.net/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >xUnit</a
+                >
+                <a
+                  href="https://nsubstitute.github.io/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >NSubstitute</a
+                >
+              </div>
+            </article>
+            <article class="panel accent-top skill-category" data-animate>
+              <h4>AI & ML</h4>
+              <div class="chip-group">
+                <a
+                  href="https://python.langchain.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >LangChain</a
+                >
+                <span class="chip">LLMs</span>
+                <span class="chip chip-expert">RAG Systems</span>
+                <span class="chip">Local AI</span>
+                <span class="chip chip-expert">Prompt engineering</span>
+                <a
+                  href="https://www.anthropic.com/claude"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Claude</a
+                >
+                <a
+                  href="https://github.com/features/copilot"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >Copilot</a
+                >
+                <a
+                  href="https://cursor.sh/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >Cursor</a
+                >
+              </div>
+            </article>
+            <article class="panel accent-bottom skill-category" data-animate>
+              <h4>Architecture & Leadership</h4>
+              <div class="chip-group">
+                <span class="chip">Component architecture</span>
+                <span class="chip">Technical leadership</span>
+                <span class="chip">Agile delivery</span>
+                <span class="chip chip-expert">UX design</span>
+                <span class="chip">Voice Interfaces</span>
+                <span class="chip chip-expert">Home Automation</span>
+                <a
+                  href="https://git-scm.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip chip-expert"
+                  >Git</a
+                >
+                <a
+                  href="https://github.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="chip"
+                  >GitHub</a
+                >
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section>
+          <div class="section-heading">Education</div>
+          <h2 class="section-title">Academic Background</h2>
+          <article class="panel accent-left education-card" data-animate>
+            <div class="education-degree">
+              Bachelor of Science in Computer Science
+            </div>
+            <div class="education-meta">University of Houston · 2012</div>
+            <div class="pill">Minor in Mathematics</div>
+          </article>
+        </section>
+      </main>
     </div>
 
     <script>
-        (() => {
-            const body = document.body;
-            const toggle = document.getElementById('themeToggle');
-            const icon = document.getElementById('themeIcon');
-            const storageKey = 'resume-theme';
+      (() => {
+        const body = document.body;
+        const toggle = document.getElementById("themeToggle");
+        const icon = document.getElementById("themeIcon");
+        const storageKey = "resume-theme";
 
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
 
-            function applyTheme(theme) {
-                if (theme === 'dark') {
-                    body.setAttribute('data-theme', 'dark');
-                    icon.innerHTML = '<path d="M21 12.79A9 9 0 0 1 11.21 3a7 7 0 1 0 9.79 9.79z" fill="currentColor"/>';
-                } else {
-                    body.removeAttribute('data-theme');
-                    icon.innerHTML = '<circle cx="12" cy="12" r="4" fill="currentColor"/><circle cx="12" cy="3" r="1.5" fill="currentColor"/><circle cx="12" cy="21" r="1.5" fill="currentColor"/><circle cx="3" cy="12" r="1.5" fill="currentColor"/><circle cx="21" cy="12" r="1.5" fill="currentColor"/><circle cx="6.879" cy="6.879" r="1.5" fill="currentColor"/><circle cx="17.121" cy="6.879" r="1.5" fill="currentColor"/><circle cx="6.879" cy="17.121" r="1.5" fill="currentColor"/><circle cx="17.121" cy="17.121" r="1.5" fill="currentColor"/>';
-                }
-            }
+        function applyTheme(theme) {
+          if (theme === "dark") {
+            body.setAttribute("data-theme", "dark");
+            icon.innerHTML =
+              '<path d="M21 12.79A9 9 0 0 1 11.21 3a7 7 0 1 0 9.79 9.79z" fill="currentColor"/>';
+          } else {
+            body.removeAttribute("data-theme");
+            icon.innerHTML =
+              '<circle cx="12" cy="12" r="4" fill="currentColor"/><circle cx="12" cy="3" r="1.5" fill="currentColor"/><circle cx="12" cy="21" r="1.5" fill="currentColor"/><circle cx="3" cy="12" r="1.5" fill="currentColor"/><circle cx="21" cy="12" r="1.5" fill="currentColor"/><circle cx="6.879" cy="6.879" r="1.5" fill="currentColor"/><circle cx="17.121" cy="6.879" r="1.5" fill="currentColor"/><circle cx="6.879" cy="17.121" r="1.5" fill="currentColor"/><circle cx="17.121" cy="17.121" r="1.5" fill="currentColor"/>';
+          }
+        }
 
-            function currentTheme() {
-                return localStorage.getItem(storageKey) || (prefersDark.matches ? 'dark' : 'light');
-            }
+        function currentTheme() {
+          return (
+            localStorage.getItem(storageKey) ||
+            (prefersDark.matches ? "dark" : "light")
+          );
+        }
 
-            function setTheme(theme, persist = true) {
-                applyTheme(theme);
-                if (persist) {
-                    localStorage.setItem(storageKey, theme);
-                }
-            }
+        function setTheme(theme, persist = true) {
+          applyTheme(theme);
+          if (persist) {
+            localStorage.setItem(storageKey, theme);
+          }
+        }
 
-            setTheme(currentTheme(), false);
+        setTheme(currentTheme(), false);
 
-            toggle.addEventListener('click', () => {
-                const nextTheme = body.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-                setTheme(nextTheme);
+        toggle.addEventListener("click", () => {
+          const nextTheme =
+            body.getAttribute("data-theme") === "dark" ? "light" : "dark";
+          setTheme(nextTheme);
+        });
+
+        prefersDark.addEventListener("change", (event) => {
+          if (!localStorage.getItem(storageKey)) {
+            setTheme(event.matches ? "dark" : "light", false);
+          }
+        });
+
+        const panels = document.querySelectorAll(".panel[data-animate]");
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                obs.unobserve(entry.target);
+              }
             });
+          },
+          { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
+        );
 
-            prefersDark.addEventListener('change', (event) => {
-                if (!localStorage.getItem(storageKey)) {
-                    setTheme(event.matches ? 'dark' : 'light', false);
-                }
-            });
-
-            const panels = document.querySelectorAll('.panel[data-animate]');
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        obs.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.2, rootMargin: '0px 0px -10% 0px' });
-
-            panels.forEach(panel => observer.observe(panel));
-        })();
+        panels.forEach((panel) => {
+          observer.observe(panel);
+        });
+      })();
     </script>
-</body>
+  </body>
 </html>
-
