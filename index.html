@@ -1,1244 +1,869 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blake Harms · Resume</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --font-family:
-          "Space Grotesk", "Inter", "Segoe UI", system-ui, -apple-system,
-          sans-serif;
-        --bg: #f5f5f0;
-        --bg-soft: #fbfbf7;
-        --fg: #071833;
-        --muted: #2e3f5f;
-        --panel: #ffffff;
-        --panel-soft: #f8f9fb;
-        --navy: #0b2447;
-        --gold: #f4c95d;
-        --accent-gradient: linear-gradient(135deg, #0b3d91, #f4c95d);
-        --shadow-color: rgba(7, 24, 51, 0.18);
-        --shadow-sharp: 10px 10px 0 var(--shadow-color);
-        --shadow-sharp-hover: 14px 14px 0 var(--shadow-color);
-        --transition: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      [data-theme="dark"] {
-        --bg: #0f0f0f;
-        --bg-soft: #081226;
-        --fg: #e7e7e7;
-        --muted: #b6c4e0;
-        --panel: #081328;
-        --panel-soft: #0b1931;
-        --shadow-color: rgba(0, 0, 0, 0.6);
-        --shadow-sharp: 10px 10px 0 var(--shadow-color);
-        --shadow-sharp-hover: 14px 14px 0 var(--shadow-color);
-      }
-
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
-
-      body {
-        font-family: var(--font-family);
-        background:
-          radial-gradient(
-            circle at top,
-            rgba(244, 201, 93, 0.05),
-            transparent 55%
-          ),
-          var(--bg);
-        color: var(--fg);
-        line-height: 1.6;
-        min-height: 100vh;
-        transition:
-          background var(--transition),
-          color var(--transition);
-      }
-
-      body::before {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: -1;
-        background:
-          radial-gradient(
-            circle at 10% 20%,
-            rgba(244, 201, 93, 0.08),
-            transparent 35%
-          ),
-          radial-gradient(
-            circle at 80% 0%,
-            rgba(11, 61, 145, 0.15),
-            transparent 40%
-          ),
-          linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 65%);
-        opacity: 0.65;
-      }
-
-      .page {
-        width: min(1100px, calc(100% - 2.5rem));
-        margin: 0 auto;
-        padding: 2.5rem 0 3rem;
-      }
-
-      .hero {
-        display: grid;
-        gap: 1.5rem;
-        padding: 2.5rem;
-        background: var(--panel);
-        box-shadow: var(--shadow-sharp);
-        position: relative;
-        overflow: hidden;
-        border-radius: 0;
-      }
-
-      .hero::after {
-        content: "";
-        position: absolute;
-        inset: 1.5rem;
-        border: 1px solid rgba(244, 201, 93, 0.2);
-        pointer-events: none;
-      }
-
-      .hero__top {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 1rem;
-      }
-
-      .hero__identity h1 {
-        font-size: clamp(2.4rem, 4vw, 3.4rem);
-        letter-spacing: -0.04em;
-      }
-
-      .hero__identity p {
-        color: var(--muted);
-        font-size: 1rem;
-        margin-top: 0.4rem;
-      }
-
-      .theme-toggle {
-        border: 1px solid rgba(7, 24, 51, 0.2);
-        background: var(--bg-soft);
-        color: var(--fg);
-        width: 3rem;
-        height: 3rem;
-        display: grid;
-        place-content: center;
-        cursor: pointer;
-        transition:
-          background var(--transition),
-          color var(--transition),
-          border var(--transition);
-        border-radius: 0;
-        box-shadow: var(--shadow-sharp);
-      }
-
-      [data-theme="dark"] .theme-toggle {
-        border: 1px solid rgba(246, 248, 255, 0.25);
-      }
-
-      .theme-toggle:hover {
-        transform: translateY(-2px) translateX(-2px);
-        box-shadow: var(--shadow-sharp-hover);
-      }
-
-      .theme-toggle svg {
-        width: 1.25rem;
-        height: 1.25rem;
-      }
-
-      .contact-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 0.75rem 2rem;
-      }
-
-      .contact-item {
-        color: var(--muted);
-        font-size: 0.95rem;
-        letter-spacing: 0.02em;
-      }
-
-      .contact-item a {
-        color: inherit;
-        text-decoration: none;
-        transition: color var(--transition);
-      }
-
-      .contact-item a:hover {
-        color: var(--navy);
-        text-decoration: underline;
-      }
-
-      [data-theme="dark"] .contact-item a:hover {
-        color: var(--gold);
-      }
-
-      .pill {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        padding: 0.3rem 0.75rem;
-        background: rgba(11, 61, 145, 0.08);
-        color: var(--navy);
-        text-transform: uppercase;
-        font-size: 0.72rem;
-        letter-spacing: 0.12em;
-      }
-
-      [data-theme="dark"] .pill {
-        background: rgba(244, 201, 93, 0.12);
-        color: var(--gold);
-      }
-
-      main {
-        margin-top: 2.5rem;
-        display: grid;
-        gap: 2rem;
-      }
-
-      .section-heading {
-        text-transform: uppercase;
-        font-size: 0.85rem;
-        letter-spacing: 0.28em;
-        color: var(--muted);
-        margin-bottom: 0.6rem;
-      }
-
-      .section-title {
-        font-size: clamp(1.45rem, 3vw, 1.8rem);
-        margin-bottom: 1.25rem;
-        position: relative;
-        display: inline-flex;
-        align-items: center;
-        gap: 0.65rem;
-      }
-
-      .section-title::after {
-        content: "";
-        width: 60px;
-        height: 2px;
-        background: var(--accent-gradient);
-      }
-
-      .panel {
-        background: var(--panel);
-        padding: 2rem;
-        position: relative;
-        box-shadow: var(--shadow-sharp);
-        overflow: hidden;
-        border-radius: 0;
-        opacity: 0;
-        transform: translateY(30px);
-        transition:
-          opacity 0.6s ease,
-          transform 0.6s ease;
-      }
-
-      .panel.is-visible {
-        opacity: 1;
-        transform: translateY(0) translateX(0);
-      }
-
-      .panel::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        width: 8px;
-        background: var(--accent-gradient);
-        transform-origin: top;
-        transform: scaleY(0);
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .panel::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        height: 8px;
-        background: var(--accent-gradient);
-        transform-origin: left center;
-        transform: scaleX(0);
-        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-
-      .panel.accent-left::before {
-        left: 0;
-      }
-
-      .panel.accent-right::before {
-        right: 0;
-      }
-
-      .panel.accent-left::after {
-        display: none !important;
-      }
-      .panel.accent-right::after {
-        display: none !important;
-      }
-
-      .panel.accent-top::after {
-        top: 0;
-      }
-
-      .panel.accent-bottom::after {
-        bottom: 0;
-      }
-
-      .panel.accent-top::before {
-        display: none !important;
-      }
-      .panel.accent-bottom::before {
-        display: none !important;
-      }
-
-      .panel.is-visible::before {
-        transform: scaleY(1);
-      }
-
-      .panel.is-visible::after {
-        transform: scaleX(1);
-      }
-
-      .panel:hover {
-        translate: -2px -2px;
-        box-shadow: var(--shadow-sharp-hover);
-      }
-
-      .summary-text {
-        font-size: 1.05rem;
-        color: var(--muted);
-      }
-
-      .experience-grid {
-        display: grid;
-        gap: 1.5rem;
-      }
-
-      .experience-card h3 {
-        font-size: 1.4rem;
-        margin-bottom: 0.2rem;
-      }
-
-      .experience-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        font-size: 0.95rem;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-      }
-
-      .experience-pill {
-        margin-top: 1rem;
-        font-weight: 600;
-        color: var(--fg);
-      }
-
-      .experience-block {
-        margin-top: 1.2rem;
-      }
-
-      .experience-block h4 {
-        font-size: 0.95rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--navy);
-      }
-
-      [data-theme="dark"] .experience-block h4 {
-        color: var(--gold);
-      }
-
-      .experience-block ul {
-        list-style: none;
-        margin-top: 0.6rem;
-      }
-
-      .experience-block p {
-        margin-bottom: 0.8rem;
-      }
-
-      .experience-block p:last-child {
-        margin-bottom: 0;
-      }
-
-      .experience-block li {
-        position: relative;
-        padding-left: 1.5rem;
-        margin-bottom: 0.45rem;
-        color: var(--muted);
-      }
-
-      .experience-block li::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 0.65rem;
-        width: 0.35rem;
-        height: 0.35rem;
-        background: var(--gold);
-      }
-
-      .skills-grid {
-        display: grid;
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      }
-
-      .skill-category h4 {
-        font-size: 1rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        margin-bottom: 0.8rem;
-        color: var(--fg);
-      }
-
-      .chip-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-      }
-
-      .chip {
-        padding: 0.35rem 0.85rem;
-        border: 1px solid rgba(7, 24, 51, 0.2);
-        color: var(--fg);
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        text-decoration: none;
-        display: inline-block;
-        transition: all var(--transition);
-      }
-
-      .chip:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(7, 24, 51, 0.15);
-        border-color: var(--navy);
-      }
-
-      [data-theme="dark"] .chip {
-        border-color: rgba(246, 248, 255, 0.3);
-        color: var(--muted);
-      }
-
-      [data-theme="dark"] .chip:hover {
-        border-color: var(--gold);
-        box-shadow: 0 4px 8px rgba(244, 201, 93, 0.2);
-      }
-
-      .chip-expert {
-        background: var(--accent-gradient);
-        color: white;
-        border: 1px solid transparent;
-        font-weight: 600;
-        box-shadow: 0 2px 8px rgba(11, 61, 145, 0.3);
-      }
-
-      .chip-expert:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 12px rgba(11, 61, 145, 0.4);
-      }
-
-      [data-theme="dark"] .chip-expert {
-        box-shadow: 0 2px 8px rgba(244, 201, 93, 0.4);
-      }
-
-      [data-theme="dark"] .chip-expert:hover {
-        box-shadow: 0 6px 12px rgba(244, 201, 93, 0.5);
-      }
-
-      [data-theme="dark"] .chip-expert {
-        color: black;
-      }
-
-      .education-card {
-        display: grid;
-        gap: 0.4rem;
-      }
-
-      .education-degree {
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
-
-      .education-meta {
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--muted);
-      }
-
-      .additional-list {
-        list-style: none;
-        display: grid;
-        gap: 0.75rem;
-        color: var(--muted);
-      }
-
-      .gradient-text {
-        background: var(--accent-gradient);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      @media (max-width: 768px) {
-        .page {
-          width: calc(100% - 1.5rem);
-          padding-top: 1.5rem;
-        }
-
-        .hero {
-          padding: 1.5rem;
-        }
-
-        .hero::after {
-          inset: 1rem;
-        }
-
-        .hero__top {
-          flex-direction: column;
-          align-items: flex-start;
-        }
-
-        .panel {
-          padding: 1.5rem;
-        }
-
-        .experience-meta {
-          flex-direction: column;
-          gap: 0.4rem;
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        * {
-          transition: none !important;
-          animation: none !important;
-        }
-
-        .panel {
-          opacity: 1 !important;
-          transform: none !important;
-        }
-
-        .panel::before {
-          transform: scaleY(1) !important;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <div class="page">
-      <header class="hero accent-left panel is-visible">
-        <div class="hero__top">
-          <div class="hero__identity">
-            <div class="pill">Senior Software Engineer</div>
-            <h1>Blake Harms</h1>
-            <p>Katy, Texas · Full-stack, simulations, DevOps</p>
-          </div>
-          <button
-            class="theme-toggle"
-            id="themeToggle"
-            aria-label="Toggle theme"
-            type="button"
-          >
-            <svg
-              id="themeIcon"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-              focusable="false"
-            >
-              <circle cx="12" cy="12" r="4" fill="currentColor" />
-              <circle cx="12" cy="3" r="1.5" fill="currentColor" />
-              <circle cx="12" cy="21" r="1.5" fill="currentColor" />
-              <circle cx="3" cy="12" r="1.5" fill="currentColor" />
-              <circle cx="21" cy="12" r="1.5" fill="currentColor" />
-              <circle cx="6.879" cy="6.879" r="1.5" fill="currentColor" />
-              <circle cx="17.121" cy="6.879" r="1.5" fill="currentColor" />
-              <circle cx="6.879" cy="17.121" r="1.5" fill="currentColor" />
-              <circle cx="17.121" cy="17.121" r="1.5" fill="currentColor" />
-            </svg>
-          </button>
-        </div>
-        <div class="contact-grid">
-          <div class="contact-item">Katy, Texas</div>
-          <div class="contact-item">
-            <a href="tel:+17137029498">(713) 702-9498</a>
-          </div>
-          <div class="contact-item">
-            <a href="mailto:blake@harms.haus">blake@harms.haus</a>
-          </div>
-          <div class="contact-item">
-            <a href="https://linkedin.com/in/blake-harms-7263bb118"
-              >linkedin.com/in/blake-harms-7263bb118</a
-            >
-          </div>
-          <div class="contact-item">
-            <a href="https://github.com/harms-haus">github.com/harms-haus</a>
-          </div>
-          <div class="contact-item">
-            <a href="https://harms-haus.github.io/resume/"
-              >harms-haus.github.io/resume</a
-            >
-          </div>
-        </div>
-        <p class="summary-text">
-          Full-stack software engineer with 8+ years at Emerson delivering
-          high-performance C# simulations, Angular/TypeScript frameworks, and
-          resilient DevOps infrastructure. Drives modernization, testing
-          culture, and AI-assisted workflows with hands-on leadership.
-        </p>
-      </header>
-
-      <main>
-        <section>
-          <div class="section-heading">Profile</div>
-          <h2 class="section-title">Professional Summary</h2>
-          <article class="panel accent-right" data-animate>
-            <p class="summary-text">
-              Led the 4-year modernization of a mission-critical C# WPF
-              framework into a near feature-parity Angular/TypeScript platform,
-              cutting technical debt by 60% and instituting domain-driven
-              structures, automated testing, and modern collaboration practices.
-              Trusted to architect integration layers, design systems, CI/CD
-              pipelines, and safe Copilot adoption strategies while mentoring
-              teams through transformation.
-            </p>
-          </article>
-        </section>
-
-        <section>
-          <div class="section-heading">Experience</div>
-          <h2 class="section-title">Professional Engagements</h2>
-          <div class="experience-grid">
-            <article class="panel accent-left experience-card" data-animate>
-              <h3>Senior Software Engineer</h3>
-              <div class="experience-meta">
-                <span>Emerson</span>
-                <span>April 2017 – Present</span>
-              </div>
-
-              <div class="experience-block">
-                <h4>Framework Modernization & Web Migration</h4>
-                <ul>
-                  <li>
-                    Rebuilt a legacy C# WPF desktop framework into an
-                    Angular/TypeScript web platform with near-zero functional
-                    loss after a 4-year solo initiative.
-                  </li>
-                  <li>
-                    Refactored codebases to resolve ~60% of technical debt,
-                    introducing unit tests and domain-based architectures.
-                  </li>
-                  <li>
-                    Transitioned into team lead overseeing continued
-                    modernization with an expanded engineering squad.
-                  </li>
-                  <li>
-                    Architected reusable integration and design systems using
-                    Angular, TypeScript, and SASS/CSS3.
-                  </li>
-                </ul>
-              </div>
-
-              <div class="experience-block">
-                <h4>DevOps & Infrastructure</h4>
-                <ul>
-                  <li>
-                    Implemented Dockerized environments for consistent debugging
-                    and deployments across dev and prod.
-                  </li>
-                  <li>
-                    Orchestrated a full SVN-to-Git migration, preserving
-                    history, splitting monorepos, and training teams.
-                  </li>
-                  <li>
-                    Established Azure-backed CI/CD pipelines for automated
-                    build, test, and release flows.
-                  </li>
-                </ul>
-              </div>
-
-              <div class="experience-block">
-                <h4>Testing, Quality & AI Practices</h4>
-                <ul>
-                  <li>
-                    Instituted an automated testing framework and persuaded
-                    adoption despite cultural pushback.
-                  </li>
-                  <li>
-                    Championed modern Git workflows, PR reviews, and pair
-                    programming.
-                  </li>
-                  <li>
-                    Wrote scripts and guidance for safe GitHub Copilot usage,
-                    training engineers on best practices.
-                  </li>
-                </ul>
-              </div>
-
-              <div class="experience-block">
-                <h4>Engineering & Performance</h4>
-                <ul>
-                  <li>
-                    Developed high-performance C# simulations for complex
-                    engineering computations.
-                  </li>
-                  <li>
-                    Designed, tested, and iterated on WPF user experiences
-                    through user research and UX improvements.
-                  </li>
-                </ul>
-              </div>
-            </article>
-
-            <article class="panel accent-right experience-card" data-animate>
-              <h3>Software Engineer</h3>
-              <div class="experience-meta">
-                <span>Wood</span>
-                <span>May 2012 – April 2017</span>
-              </div>
-
-              <div class="experience-block">
-                <h4>Utility Designer</h4>
-                <ul>
-                  <li>
-                    Delivered WPF MVVM applications for internal Oil & Gas fluid
-                    dynamics simulation tooling.
-                  </li>
-                  <li>
-                    Enabled engineers to configure and run complex simulations
-                    via tailored UI workflows.
-                  </li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section>
-          <div class="section-heading">Personal Projects</div>
-          <h2 class="section-title">AI Deep-Dive</h2>
-          <div class="experience-grid">
-            <article class="panel accent-left experience-card" data-animate>
-              <h3 class="gradient-text">Jester</h3>
-              <div class="experience-meta">
-                <span>AI Story Generation Framework</span>
-                <span>Context-Only Architecture</span>
-              </div>
-
-              <div class="experience-block">
-                <p class="summary-text">
-                  A sophisticated context-only bedtime story writing framework
-                  powered by LLMs instructed with a set of rules, procedures and
-                  plans, featuring a hybrid GraphRAG backend that maintains 40+
-                  interconnected stories with Wikipedia-level detail about
-                  characters, locations, and events.
-                </p>
-                <p class="summary-text">
-                  The framework is designed to be used by myself to generate
-                  stories for my daughter with her input. The framework starts
-                  with a "context" that lists the characters, locations, and
-                  events that are relevant to the story. Next, it generates an
-                  outline which I then edit and refine. Finally, it writes the
-                  full story and I edit it to be sure there were no
-                  hallucinations.
-                </p>
-              </div>
-
-              <div class="chip-group">
-                <span class="chip">LLM-Powered</span>
-                <span class="chip">Hybrid GraphRAG</span>
-                <span class="chip">Cross-Linked Stories</span>
-                <span class="chip">Character-centered</span>
-              </div>
-            </article>
-
-            <article class="panel accent-right experience-card" data-animate>
-              <h3 class="gradient-text">Bernard</h3>
-              <div class="experience-meta">
-                <span>Home Voice Assistant</span>
-                <span>Privacy-First AI</span>
-              </div>
-
-              <div class="experience-block">
-                <p class="summary-text">
-                  LangChain-powered voice assistant designed to replace Alexa
-                  for family use, emphasizing privacy and kid-friendly
-                  interactions.
-                </p>
-                <p class="summary-text">
-                  Integrates with Home Assistant to control smart home devices,
-                  searches web/Wikipedia, and can manage entertainment across
-                  multiple TVs.
-                </p>
-                <p class="summary-text">
-                  The assistant is managed with a web interface for user
-                  management, conversation history, and content moderation.
-                </p>
-                <p class="summary-text">
-                  The assistant has a RAG system to "remember" things about the
-                  family and the house.
-                </p>
-              </div>
-
-              <div class="experience-block">
-                <h4>Hardware & Features</h4>
-                <ul>
-                  <li>
-                    <a
-                      href="https://futureproofhomes.net"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      >FutureProofHomes Satellite1</a
-                    >
-                    hardware integration via Home Assistant voice pipeline
-                  </li>
-                  <li>Multi-device ingestion</li>
-                  <li>Manages TV control and entertainment</li>
-                </ul>
-              </div>
-
-              <div class="chip-group">
-                <span class="chip">LangChain</span>
-                <span class="chip">Home Assistant</span>
-                <span class="chip">Voice Assistant</span>
-                <span class="chip">Privacy-Focused</span>
-                <span class="chip">Multi-point Ingestion</span>
-              </div>
-            </article>
-
-            <article class="panel accent-left experience-card" data-animate>
-              <h3 class="gradient-text">Bifrost</h3>
-              <div class="experience-meta">
-                <span>AI Agent Issue Manager</span>
-                <span>Golang/React System</span>
-              </div>
-
-              <div class="experience-block">
-                <p class="summary-text">
-                  AI agent issue manager that turns plans into "runes" (issues)
-                  with hierarchical sagas, branch names, and dependencies. Built
-                  with Golang CLI/server and React UI (with Golang test
-                  version).
-                </p>
-                <p class="summary-text">
-                  <a
-                    href="https://github.com/devzeebo/bifrost"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >github.com/devzeebo/bifrost</a
-                  >
-                </p>
-              </div>
-
-              <div class="chip-group">
-                <span class="chip">Golang</span>
-                <span class="chip">React</span>
-                <span class="chip">CLI</span>
-                <span class="chip">AI Agent System</span>
-              </div>
-            </article>
-
-            <article class="panel accent-right experience-card" data-animate>
-              <h3 class="gradient-text">Ymir</h3>
-              <div class="experience-meta">
-                <span>Workspace Manager</span>
-                <span>Rust/Tauri/React</span>
-              </div>
-
-              <div class="experience-block">
-                <p class="summary-text">
-                  Rust (Tauri)/React web and desktop app to manage terminal
-                  tabs, browser tabs, and editors in workspaces. Features
-                  worktree support for sub-workspaces, secure websockets, and
-                  both web/Tauri access.
-                </p>
-                <p class="summary-text">
-                  <a
-                    href="https://github.com/harms-haus/ymir"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    >github.com/harms-haus/ymir</a
-                  >
-                </p>
-              </div>
-
-              <div class="chip-group">
-                <span class="chip">Rust</span>
-                <span class="chip">Tauri</span>
-                <span class="chip">React</span>
-                <span class="chip">WebSockets</span>
-                <span class="chip">Workspace Management</span>
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section>
-          <div class="section-heading">Skills</div>
-          <h2 class="section-title">Technical Focus</h2>
-          <div class="skills-grid">
-            <article class="panel accent-top skill-category" data-animate>
-              <h4>Languages</h4>
-              <div class="chip-group">
-                <a
-                  href="https://www.typescriptlang.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >TypeScript</a
-                >
-                <a
-                  href="https://www.python.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Python</a
-                >
-                <a
-                  href="https://learn.microsoft.com/en-us/dotnet/csharp/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >C#</a
-                >
-                <a
-                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >JavaScript</a
-                >
-                <a
-                  href="https://www.iso.org/standard/63555.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >SQL</a
-                >
-                <a
-                  href="https://rust-lang.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Rust</a
-                >
-                <a
-                  href="https://go.dev"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Golang</a
-                >
-              </div>
-            </article>
-            <article class="panel accent-bottom skill-category" data-animate>
-              <h4>Frontend</h4>
-              <div class="chip-group">
-                <a
-                  href="https://angular.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >Angular</a
-                >
-                <a
-                  href="https://react.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >React</a
-                >
-                <a
-                  href="https://html.spec.whatwg.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >HTML5</a
-                >
-                <a
-                  href="https://www.w3.org/Style/CSS/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >CSS3</a
-                >
-                <a
-                  href="https://sass-lang.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >SASS</a
-                >
-                <a
-                  href="https://learn.microsoft.com/en-us/dotnet/desktop/wpf/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >WPF</a
-                >
-              </div>
-            </article>
-            <article class="panel accent-top skill-category" data-animate>
-              <h4>Backend & APIs</h4>
-              <div class="chip-group">
-                <a
-                  href="https://nodejs.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >Node.js</a
-                >
-                <span class="chip">C# simulations</span>
-                <span class="chip chip-expert">REST API</span>
-                <span class="chip">SignalR</span>
-                <span class="chip">WebSockets</span>
-                <span class="chip">Microservices</span>
-              </div>
-            </article>
-            <article class="panel accent-bottom skill-category" data-animate>
-              <h4>Databases</h4>
-              <div class="chip-group">
-                <a
-                  href="https://redis.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Redis</a
-                >
-                <span class="chip chip-expert">Vector Databases</span>
-                <span class="chip">Code Graphs</span>
-                <span class="chip">Tree-sitting</span>
-              </div>
-            </article>
-            <article class="panel accent-top skill-category" data-animate>
-              <h4>DevOps & Infrastructure</h4>
-              <div class="chip-group">
-                <a
-                  href="https://www.docker.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >Docker</a
-                >
-                <span class="chip" chip-expert>CI/CD</span>
-                <a
-                  href="https://azure.microsoft.com/en-us/products/devops"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Azure DevOps</a
-                >
-                <a
-                  href="https://www.linux.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Linux admin</a
-                >
-              </div>
-            </article>
-            <article class="panel accent-bottom skill-category" data-animate>
-              <h4>Testing & Quality</h4>
-              <div class="chip-group">
-                <a
-                  href="https://jestjs.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Jest</a
-                >
-                <a
-                  href="https://vitest.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >Vitest</a
-                >
-                <a
-                  href="https://playwright.dev/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Playwright</a
-                >
-                <a
-                  href="https://xunit.net/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >xUnit</a
-                >
-                <a
-                  href="https://nsubstitute.github.io/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >NSubstitute</a
-                >
-              </div>
-            </article>
-            <article class="panel accent-top skill-category" data-animate>
-              <h4>AI & ML</h4>
-              <div class="chip-group">
-                <a
-                  href="https://python.langchain.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >LangChain</a
-                >
-                <span class="chip">LLMs</span>
-                <span class="chip chip-expert">RAG Systems</span>
-                <span class="chip">Local AI</span>
-                <span class="chip chip-expert">Prompt engineering</span>
-                <a
-                  href="https://www.anthropic.com/claude"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Claude</a
-                >
-                <a
-                  href="https://github.com/features/copilot"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >Copilot</a
-                >
-                <a
-                  href="https://cursor.sh/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >Cursor</a
-                >
-              </div>
-            </article>
-            <article class="panel accent-bottom skill-category" data-animate>
-              <h4>Architecture & Leadership</h4>
-              <div class="chip-group">
-                <span class="chip">Component architecture</span>
-                <span class="chip">Technical leadership</span>
-                <span class="chip">Agile delivery</span>
-                <span class="chip chip-expert">UX design</span>
-                <span class="chip">Voice Interfaces</span>
-                <span class="chip chip-expert">Home Automation</span>
-                <a
-                  href="https://git-scm.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip chip-expert"
-                  >Git</a
-                >
-                <a
-                  href="https://github.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="chip"
-                  >GitHub</a
-                >
-              </div>
-            </article>
-          </div>
-        </section>
-
-        <section>
-          <div class="section-heading">Education</div>
-          <h2 class="section-title">Academic Background</h2>
-          <article class="panel accent-left education-card" data-animate>
-            <div class="education-degree">
-              Bachelor of Science in Computer Science
-            </div>
-            <div class="education-meta">University of Houston · 2012</div>
-            <div class="pill">Minor in Mathematics</div>
-          </article>
-        </section>
-      </main>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Blake Harms — Senior Software Engineer & AI Systems</title>
+<meta name="description" content="Blake Harms — Senior Software Engineer specializing in Angular/TypeScript platforms, high-performance C# simulations, resilient DevOps, and AI/RAG systems. 8+ years at Emerson & Wood." />
+<meta name="color-scheme" content="dark" />
+<meta name="theme-color" content="#0a0b0d" />
+
+<!-- Open Graph -->
+<meta property="og:title" content="Blake Harms — Senior Software Engineer & AI Systems" />
+<meta property="og:description" content="Full-stack engineer modernizing mission-critical systems and building AI tooling. 8+ years." />
+<meta property="og:type" content="website" />
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0b0d'/%3E%3Crect x='8' y='8' width='16' height='16' fill='%233b9eff'/%3E%3C/svg%3E" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+<style>
+  /* =========================================================
+     TOKENS
+     ========================================================= */
+  :root{
+    --bg:        #0a0b0d;
+    --bg-raise:  #0f1114;
+    --panel:     #121417;
+    --panel-2:   #16181c;
+    --line:      #21242a;
+    --line-2:    #2c3038;
+
+    --text:      #e8e9ec;
+    --text-2:    #a7aab1;
+    --text-3:    #6c6f77;
+
+    --accent:    #3b9eff;   /* electric blue — flat, never glowing */
+    --accent-2:  #62b4ff;
+    --accent-dim:#3b9eff1a;
+    --on-accent: #04121f;
+
+    --maxw: 1180px;
+    --gut: clamp(20px, 4vw, 40px);
+    --radius: 4px;
+
+    --font-display: "Space Grotesk", system-ui, sans-serif;
+    --font-body:    "Inter", system-ui, -apple-system, sans-serif;
+    --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+
+  /* =========================================================
+     RESET
+     ========================================================= */
+  *,*::before,*::after{ box-sizing:border-box; }
+  *{ margin:0; padding:0; }
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    font-size:16.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+  /* faint engineering grid — flat, no glow */
+  body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,.018) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.018) 1px, transparent 1px);
+    background-size:52px 52px;
+    mask-image:radial-gradient(ellipse 100% 80% at 50% 0%, #000 30%, transparent 85%);
+  }
+  img{ max-width:100%; display:block; }
+  a{ color:inherit; text-decoration:none; }
+  button{ font:inherit; color:inherit; background:none; border:0; cursor:pointer; }
+  ul{ list-style:none; }
+  ::selection{ background:var(--accent); color:var(--on-accent); }
+
+  /* =========================================================
+     LAYOUT PRIMITIVES
+     ========================================================= */
+  .wrap{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gut); position:relative; z-index:1; }
+  .stack-tight > * + *{ margin-top:.5rem; }
+  main{ position:relative; z-index:1; }
+
+  .mono{ font-family:var(--font-mono); font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; color:var(--text-3); }
+  .eyebrow{
+    font-family:var(--font-mono);
+    font-size:.74rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--accent);
+    display:inline-flex;
+    align-items:center;
+    gap:.6rem;
+  }
+  .eyebrow::before{ content:""; width:24px; height:1px; background:var(--accent); display:inline-block; }
+
+  /* =========================================================
+     HEADER / HERO
+     ========================================================= */
+  .site-header{ padding-top:clamp(20px,4vw,34px); }
+
+  /* terminal-ish status bar */
+  .statusbar{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:.4rem .9rem;
+    padding:.5rem .9rem;
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--bg-raise);
+    font-family:var(--font-mono);
+    font-size:.74rem;
+    color:var(--text-3);
+    margin-bottom:clamp(40px,7vw,72px);
+  }
+  .statusbar .dot{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--accent); display:inline-block;
+  }
+  .statusbar .sep{ color:var(--line-2); }
+  .statusbar .avail{ color:var(--accent); }
+  .statusbar .right{ margin-left:auto; }
+
+  .hero{
+    display:grid;
+    grid-template-columns:1fr;
+    gap:clamp(28px,4vw,44px);
+    padding-bottom:clamp(56px,9vw,96px);
+    border-bottom:1px solid var(--line);
+  }
+  .hero-name{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(2.7rem, 9vw, 5.4rem);
+    line-height:.95;
+    letter-spacing:-.03em;
+    margin-top:1rem;
+  }
+  .hero-name .ln{ color:var(--text-3); font-weight:600; }
+  .hero-role{
+    font-family:var(--font-mono);
+    font-size:clamp(1rem,2.4vw,1.35rem);
+    color:var(--text);
+    margin-top:.9rem;
+    letter-spacing:-.01em;
+  }
+  .hero-role .slash{ color:var(--accent); padding:0 .35rem; }
+  .hero-role .cursor{
+    display:inline-block; width:.55em; height:1.05em;
+    background:var(--accent); vertical-align:-.16em; margin-left:.12em;
+  }
+  .hero-tag{
+    color:var(--text-2);
+    font-size:1.06rem;
+    max-width:46ch;
+    margin-top:1.4rem;
+  }
+  .hero-tag strong{ color:var(--text); font-weight:600; }
+
+  .hero-meta{
+    display:flex; flex-wrap:wrap; gap:.4rem 1.4rem;
+    font-family:var(--font-mono); font-size:.82rem; color:var(--text-3);
+    margin-top:1.6rem;
+  }
+  .hero-meta a{ color:var(--text-2); border-bottom:1px solid transparent; }
+  .hero-meta a:hover{ color:var(--accent); border-color:var(--accent); }
+
+  /* contact buttons */
+  .cta-row{ display:flex; flex-wrap:wrap; gap:.7rem; margin-top:1.9rem; }
+  .btn{
+    display:inline-flex; align-items:center; gap:.6rem;
+    padding:.72rem 1.05rem;
+    border:1px solid var(--line-2);
+    border-radius:var(--radius);
+    background:var(--panel);
+    color:var(--text);
+    font-size:.92rem; font-weight:500;
+    transition:border-color .18s, color .18s, background .18s, transform .18s;
+  }
+  .btn:hover{ border-color:var(--accent); color:var(--accent); background:var(--panel-2); }
+  .btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .btn svg{ width:17px; height:17px; flex:0 0 auto; }
+  .btn--primary{ border-color:var(--accent); color:var(--accent); }
+
+  /* stat strip */
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(4, minmax(0,1fr));
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    background:var(--bg-raise);
+  }
+  .stat{ padding:1.15rem 1.1rem; border-left:1px solid var(--line); }
+  .stat:first-child{ border-left:0; }
+  .stat .v{ font-family:var(--font-display); font-weight:700; font-size:clamp(1.5rem,3.4vw,2.1rem); color:var(--accent); line-height:1; }
+  .stat .l{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.12em; text-transform:uppercase; color:var(--text-3); margin-top:.55rem; }
+
+  /* =========================================================
+     STICKY NAV
+     ========================================================= */
+  .toc{
+    position:sticky; top:0; z-index:50;
+    background:rgba(10,11,13,.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .toc-inner{
+    display:flex; align-items:center; gap:.3rem;
+    max-width:var(--maxw); margin-inline:auto;
+    padding:.6rem var(--gut);
+    overflow-x:auto; scrollbar-width:none;
+  }
+  .toc-inner::-webkit-scrollbar{ display:none; }
+  .toc-brand{ font-family:var(--font-mono); font-size:.8rem; color:var(--text-2); white-space:nowrap; margin-right:auto; }
+  .toc-brand b{ color:var(--accent); }
+  .toc a{
+    font-family:var(--font-mono); font-size:.74rem; letter-spacing:.1em; text-transform:uppercase;
+    color:var(--text-3); padding:.4rem .65rem; border-radius:var(--radius);
+    white-space:nowrap; transition:color .16s, background .16s;
+  }
+  .toc a:hover{ color:var(--text); }
+  .toc a.is-active{ color:var(--accent); background:var(--accent-dim); }
+  .toc .toc-mail{ color:var(--accent); }
+
+  /* =========================================================
+     SECTION SCAFFOLD
+     ========================================================= */
+  section{ padding-block:clamp(64px,9vw,104px); border-bottom:1px solid var(--line); }
+  .sec-head{ margin-bottom:clamp(32px,5vw,52px); max-width:70ch; }
+  .sec-title{
+    font-family:var(--font-display);
+    font-weight:700;
+    font-size:clamp(1.7rem,4vw,2.5rem);
+    letter-spacing:-.02em;
+    line-height:1.05;
+    margin-top:.9rem;
+  }
+  .sec-lede{ color:var(--text-2); margin-top:1rem; font-size:1.05rem; }
+
+  /* ABOUT */
+  #about .lede-quote{
+    font-family:var(--font-display);
+    font-weight:500;
+    font-size:clamp(1.35rem,3vw,1.95rem);
+    line-height:1.35;
+    letter-spacing:-.01em;
+    color:var(--text);
+    max-width:24ch;
+  }
+  #about .lede-quote .hl{ color:var(--accent); }
+  #about .about-grid{
+    display:grid; grid-template-columns:1fr; gap:clamp(32px,5vw,56px);
+    align-items:start;
+  }
+  #about .body-copy p{ color:var(--text-2); }
+  #about .body-copy p + p{ margin-top:1rem; }
+  .facts{
+    display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.85rem;
+    border:1px solid var(--line); border-radius:var(--radius); padding:1.2rem;
+    background:var(--bg-raise);
+  }
+  .facts .f{ font-size:.92rem; }
+  .facts .k{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); display:block; margin-bottom:.25rem; }
+  .facts .v{ color:var(--text); }
+  .facts .v a:hover{ color:var(--accent); }
+
+  /* =========================================================
+     SKILLS
+     ========================================================= */
+  .caps{
+    display:grid; gap:1rem;
+    grid-template-columns:repeat(auto-fit, minmax(230px,1fr));
+  }
+  .cap{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--panel);
+    padding:1.4rem 1.3rem;
+    position:relative;
+    transition:border-color .2s, transform .2s, background .2s;
+  }
+  .cap:hover{ border-color:var(--accent); background:var(--panel-2); transform:translateY(-3px); }
+  .cap .ico{
+    width:38px; height:38px; border:1px solid var(--line-2); border-radius:var(--radius);
+    display:grid; place-items:center; color:var(--accent); margin-bottom:1rem;
+  }
+  .cap .ico svg{ width:20px; height:20px; }
+  .cap h3{ font-family:var(--font-display); font-size:1.12rem; font-weight:600; letter-spacing:-.01em; }
+  .cap p{ color:var(--text-2); font-size:.92rem; margin-top:.45rem; }
+  .cap .tags{ display:flex; flex-wrap:wrap; gap:.35rem; margin-top:.9rem; }
+  .cap .tags span{ font-family:var(--font-mono); font-size:.66rem; letter-spacing:.04em; color:var(--text-3); }
+
+  .skill-matrix{
+    display:grid; gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    overflow:hidden;
+    grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  }
+  .skill-group{ background:var(--bg-raise); padding:1.4rem 1.3rem; }
+  .skill-group h4{
+    display:flex; align-items:center; gap:.55rem;
+    font-family:var(--font-mono); font-size:.74rem; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--text-3); margin-bottom:1rem;
+  }
+  .skill-group h4::before{ content:""; width:7px; height:7px; background:var(--accent); display:inline-block; }
+  .chips{ display:flex; flex-wrap:wrap; gap:.5rem; }
+  .chip{
+    font-family:var(--font-mono); font-size:.78rem;
+    padding:.32rem .6rem; border:1px solid var(--line-2); border-radius:var(--radius);
+    color:var(--text-2); transition:border-color .16s, color .16s;
+  }
+  .chip:hover{ color:var(--text); border-color:var(--text-3); }
+  .chip.strong{ color:var(--accent); border-color:var(--accent); }
+
+  /* =========================================================
+     EXPERIENCE
+     ========================================================= */
+  .timeline{ display:grid; gap:clamp(28px,4vw,40px); }
+  .job{ position:relative; padding-left:clamp(22px,3vw,30px); border-left:1px solid var(--line-2); }
+  .job::before{
+    content:""; position:absolute; left:-5px; top:.4rem;
+    width:9px; height:9px; background:var(--bg); border:2px solid var(--accent);
+  }
+  .job-head{ display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1rem; }
+  .job-head h3{ font-family:var(--font-display); font-size:1.3rem; font-weight:600; letter-spacing:-.01em; }
+  .job-head .co{ color:var(--accent); }
+  .job .when{ font-family:var(--font-mono); font-size:.76rem; color:var(--text-3); letter-spacing:.06em; }
+  .job .when .now{ color:var(--accent); }
+  .job ul{ margin-top:1.1rem; display:grid; gap:.85rem; }
+  .job li{ position:relative; padding-left:1.3rem; color:var(--text-2); }
+  .job li::before{
+    content:""; position:absolute; left:0; top:.62em;
+    width:7px; height:1px; background:var(--accent);
+  }
+  .job li b{ color:var(--text); font-weight:600; }
+  .job li .num{ color:var(--accent); font-weight:600; }
+
+  /* =========================================================
+     PROJECTS
+     ========================================================= */
+  .proj-grid{
+    display:grid; gap:1rem;
+    grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+  }
+  .proj{
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    background:var(--panel);
+    padding:1.5rem 1.4rem;
+    display:flex; flex-direction:column;
+    transition:border-color .2s, transform .2s, background .2s;
+  }
+  .proj:hover{ border-color:var(--accent); background:var(--panel-2); transform:translateY(-3px); }
+  .proj-top{ display:flex; align-items:center; gap:.6rem; margin-bottom:.7rem; }
+  .proj-top .mark{
+    width:26px; height:26px; border:1px solid var(--accent); border-radius:3px;
+    display:grid; place-items:center; color:var(--accent);
+    font-family:var(--font-mono); font-weight:600; font-size:.85rem;
+  }
+  .proj h3{ font-family:var(--font-display); font-size:1.15rem; font-weight:600; letter-spacing:-.01em; }
+  .proj .kind{ font-family:var(--font-mono); font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--text-3); margin-left:auto; }
+  .proj p{ color:var(--text-2); font-size:.93rem; flex:1; }
+  .proj .pl{ margin-top:1rem; font-family:var(--font-mono); font-size:.78rem; color:var(--accent); }
+  .proj .pl:hover{ text-decoration:underline; }
+  .proj .tech{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:1.1rem; }
+  .proj .tech span{ font-family:var(--font-mono); font-size:.68rem; color:var(--text-3); border-top:1px solid var(--line-2); padding-top:.5rem; width:100%; letter-spacing:.04em; }
+  .proj .tech b{ color:var(--text-2); font-weight:400; }
+
+  /* =========================================================
+     EDUCATION
+     ========================================================= */
+  .edu{ display:grid; grid-template-columns:1fr; gap:1rem; }
+  .edu-card{
+    border:1px solid var(--line); border-radius:var(--radius); background:var(--bg-raise);
+    padding:1.5rem 1.4rem; display:flex; flex-wrap:wrap; align-items:baseline; gap:.4rem 1rem;
+  }
+  .edu-card h3{ font-family:var(--font-display); font-size:1.2rem; font-weight:600; }
+  .edu-card .sub{ color:var(--text-2); }
+  .edu-card .yr{ font-family:var(--font-mono); font-size:.78rem; color:var(--text-3); margin-left:auto; }
+
+  /* =========================================================
+     FOOTER
+     ========================================================= */
+  .site-footer{ padding-block:clamp(56px,8vw,84px); position:relative; z-index:1; }
+  .footer-cta{ text-align:left; margin-bottom:clamp(40px,6vw,64px); }
+  .footer-cta h2{ font-family:var(--font-display); font-weight:700; font-size:clamp(2rem,6vw,3.4rem); line-height:1; letter-spacing:-.03em; }
+  .footer-cta h2 .hl{ color:var(--accent); }
+  .footer-cta p{ color:var(--text-2); margin-top:1rem; max-width:50ch; }
+  .footer-links{
+    display:flex; flex-wrap:wrap; gap:.5rem 1.6rem;
+    padding-top:2rem; border-top:1px solid var(--line);
+    font-family:var(--font-mono); font-size:.85rem;
+  }
+  .footer-links a{ color:var(--text-2); display:inline-flex; align-items:center; gap:.45rem; }
+  .footer-links a:hover{ color:var(--accent); }
+  .footer-links svg{ width:15px; height:15px; }
+  .footer-base{
+    display:flex; flex-wrap:wrap; gap:.5rem 1rem; justify-content:space-between;
+    margin-top:1.6rem; font-family:var(--font-mono); font-size:.72rem; color:var(--text-3);
+  }
+  .footer-base a:hover{ color:var(--accent); }
+  .top-link{ color:var(--accent); }
+
+  /* =========================================================
+     REVEAL ANIMATION
+     ========================================================= */
+  .reveal{ opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  /* =========================================================
+     RESPONSIVE
+     ========================================================= */
+  @media (min-width:760px){
+    .hero{ grid-template-columns:1.35fr .9fr; align-items:end; }
+    .hero-tag{ margin-top:1.2rem; }
+    .stats{ grid-column:1 / -1; }
+    #about .about-grid{ grid-template-columns:1.1fr .9fr; }
+  }
+  @media (max-width:560px){
+    .stats{ grid-template-columns:repeat(2,1fr); }
+    .stat:nth-child(3){ border-left:0; }
+    .stat:nth-child(3),.stat:nth-child(4){ border-top:1px solid var(--line); }
+    .statusbar .right{ margin-left:0; }
+    .edu-card .yr{ margin-left:0; }
+  }
+
+  /* =========================================================
+     MOTION PREFERENCES
+     ========================================================= */
+  @media (prefers-reduced-motion: reduce){
+    html{ scroll-behavior:auto; }
+    .reveal{ opacity:1; transform:none; transition:none; }
+    .cursor{ animation:none; }
+    *{ transition:none !important; }
+  }
+
+  /* =========================================================
+     PRINT
+     ========================================================= */
+  @media print{
+    :root{ --bg:#fff; --text:#111; --text-2:#222; --text-3:#444; --line:#ccc; --line-2:#bbb; --panel:#fff; --panel-2:#fff; --bg-raise:#fff; --accent:#0a58c8; --accent-dim:#eaf3ff; }
+    body{ font-size:11pt; background:#fff; color:#111; }
+    body::before{ display:none; }
+    .toc, .cta-row, .top-link, .footer-base .top-link{ display:none !important; }
+    section{ padding-block:14px; }
+    .cap:hover,.proj:hover{ transform:none; }
+    .stats{ break-inside:avoid; }
+    .stat{ border-color:#ccc !important; }
+    a{ color:#0a58c8; }
+    .chip{ border-color:#999 !important; }
+  }
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip" style="position:absolute;left:-999px;">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+
+    <div class="statusbar" aria-hidden="true">
+      <span class="dot"></span>
+      <span class="avail">open to opportunities</span>
+      <span class="sep">/</span>
+      <span>blake@harms</span>
+      <span class="sep">/</span>
+      <span>Katy, TX</span>
+      <span class="right">v2026.06</span>
     </div>
 
-    <script>
-      (() => {
-        const body = document.body;
-        const toggle = document.getElementById("themeToggle");
-        const icon = document.getElementById("themeIcon");
-        const storageKey = "resume-theme";
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Senior Software Engineer</p>
+        <h1 class="hero-name">Blake <span class="ln">Harms</span></h1>
+        <p class="hero-role">Full-Stack<span class="slash">/</span>AI Systems<span class="slash">/</span>DevOps<span class="cursor" aria-hidden="true"></span></p>
+        <p class="hero-tag">I modernize mission-critical software for a living — and build <strong>AI tooling, agentic systems, and RAG frameworks</strong> on the side. 8+ years turning legacy complexity into clean, cloud-ready platforms.</p>
 
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)");
+        <div class="cta-row">
+          <a class="btn btn--primary" href="mailto:blake@harms.haus">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>
+            blake@harms.haus
+          </a>
+          <a class="btn" href="https://github.com/harms-haus" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>
+            GitHub
+          </a>
+          <a class="btn" href="https://linkedin.com/in/blake-harms-7263bb118" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3 8.5h3.9V21H3V8.5Zm6.5 0h3.7v1.7h.05c.52-.93 1.78-1.9 3.67-1.9 3.92 0 4.65 2.4 4.65 5.5V21h-3.9v-5.9c0-1.4 0-3.2-2-3.2s-2.25 1.5-2.25 3.1V21H9.5V8.5Z"/></svg>
+            LinkedIn
+          </a>
+          <a class="btn" href="https://harms-haus.github.io/resume/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 4h6v6"/><path d="M20 4 10 14"/><path d="M19 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h5"/></svg>
+            Live site
+          </a>
+        </div>
 
-        function applyTheme(theme) {
-          if (theme === "dark") {
-            body.setAttribute("data-theme", "dark");
-            icon.innerHTML =
-              '<path d="M21 12.79A9 9 0 0 1 11.21 3a7 7 0 1 0 9.79 9.79z" fill="currentColor"/>';
-          } else {
-            body.removeAttribute("data-theme");
-            icon.innerHTML =
-              '<circle cx="12" cy="12" r="4" fill="currentColor"/><circle cx="12" cy="3" r="1.5" fill="currentColor"/><circle cx="12" cy="21" r="1.5" fill="currentColor"/><circle cx="3" cy="12" r="1.5" fill="currentColor"/><circle cx="21" cy="12" r="1.5" fill="currentColor"/><circle cx="6.879" cy="6.879" r="1.5" fill="currentColor"/><circle cx="17.121" cy="6.879" r="1.5" fill="currentColor"/><circle cx="6.879" cy="17.121" r="1.5" fill="currentColor"/><circle cx="17.121" cy="17.121" r="1.5" fill="currentColor"/>';
-          }
-        }
+        <div class="hero-meta">
+          <span><a href="tel:+17137029498">(713) 702-9498</a></span>
+          <span>·</span>
+          <span>Katy, Texas</span>
+          <span>·</span>
+          <span>8+ years experience</span>
+        </div>
+      </div>
 
-        function currentTheme() {
-          return (
-            localStorage.getItem(storageKey) ||
-            (prefersDark.matches ? "dark" : "light")
-          );
-        }
+      <div class="stats" aria-label="Career highlights">
+        <div class="stat"><div class="v">8+</div><div class="l">Years building software</div></div>
+        <div class="stat"><div class="v">60%</div><div class="l">Tech debt eliminated</div></div>
+        <div class="stat"><div class="v">4-yr</div><div class="l">Framework modernization</div></div>
+        <div class="stat"><div class="v">5</div><div class="l">AI side-projects shipped</div></div>
+      </div>
+    </div>
+  </div>
+</header>
 
-        function setTheme(theme, persist = true) {
-          applyTheme(theme);
-          if (persist) {
-            localStorage.setItem(storageKey, theme);
-          }
-        }
+<nav class="toc" aria-label="Section navigation">
+  <div class="toc-inner">
+    <span class="toc-brand">blake<b>_</b>harms</span>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a class="toc-mail" href="mailto:blake@harms.haus">Contact</a>
+  </div>
+</nav>
 
-        setTheme(currentTheme(), false);
+<main id="main">
 
-        toggle.addEventListener("click", () => {
-          const nextTheme =
-            body.getAttribute("data-theme") === "dark" ? "light" : "dark";
-          setTheme(nextTheme);
-        });
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">About</p>
+        <p class="lede-quote">Engineer who ships <span class="hl">mission-critical</span> software — and treats AI as a craft, not a buzzword.</p>
+      </div>
+      <div class="about-grid">
+        <div class="body-copy reveal">
+          <p>Full-stack software engineer with <strong style="color:var(--text)">8+ years</strong> at Emerson and Wood, specializing in high-performance C# simulations, Angular-based web platforms, and resilient DevOps infrastructure.</p>
+          <p>I led a 4-year initiative to modernize mission-critical desktop systems into cloud-ready Angular environments — reducing technical debt by 60%. I architect integration layers, build automated testing cultures, and drive safe AI/Copilot adoption inside real engineering workflows.</p>
+          <p>Outside of work I build AI tooling end-to-end: a GraphRAG storytelling engine, a published agentic-coding extension suite, a family voice assistant, and a Rust workspace manager.</p>
+        </div>
+        <aside class="facts reveal" aria-label="At a glance">
+          <div class="f"><span class="k">Role</span><span class="v">Senior Software Engineer</span></div>
+          <div class="f"><span class="k">Focus</span><span class="v">Full-stack · AI · DevOps</span></div>
+          <div class="f"><span class="k">Current</span><span class="v">Emerson · since 2017</span></div>
+          <div class="f"><span class="k">Based</span><span class="v">Katy, Texas (remote-ok)</span></div>
+          <div class="f"><span class="k">GitHub</span><span class="v"><a href="https://github.com/harms-haus" target="_blank" rel="noopener">harms-haus</a></span></div>
+          <div class="f"><span class="k">Email</span><span class="v"><a href="mailto:blake@harms.haus">blake@harms.haus</a></span></div>
+        </aside>
+      </div>
+    </div>
+  </section>
 
-        prefersDark.addEventListener("change", (event) => {
-          if (!localStorage.getItem(storageKey)) {
-            setTheme(event.matches ? "dark" : "light", false);
-          }
-        });
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Capabilities</p>
+        <h2 class="sec-title">A full-stack toolchain, sharpened over a decade.</h2>
+        <p class="sec-lede">From simulation engines to agentic AI. These are the lanes I work in daily — strongest skills are marked.</p>
+      </div>
 
-        const panels = document.querySelectorAll(".panel[data-animate]");
-        const observer = new IntersectionObserver(
-          (entries, obs) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                obs.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.2, rootMargin: "0px 0px -10% 0px" },
-        );
+      <div class="caps reveal" style="margin-bottom:clamp(28px,4vw,40px)">
+        <div class="cap">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/><path d="m3 18 9 5 9-5"/></svg></span>
+          <h3>Full-Stack & Frontend</h3>
+          <p>Cloud-ready platforms with near-perfect feature parity, built to last.</p>
+          <div class="tags"><span>Angular · TypeScript · React · CSS</span></div>
+        </div>
+        <div class="cap">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="1"/><path d="M9 9h6v6H9z"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg></span>
+          <h3>AI & Intelligent Systems</h3>
+          <p>From GraphRAG storytelling to voice assistants and agentic tooling.</p>
+          <div class="tags"><span>RAG · LangChain · Agents · Local LLMs</span></div>
+        </div>
+        <div class="cap">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg></span>
+          <h3>DevOps & Platform</h3>
+          <p>Safe, automated, reproducible delivery — containers to CI/CD.</p>
+          <div class="tags"><span>Docker · CI/CD · Azure · Git</span></div>
+        </div>
+        <div class="cap">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 15 3-9 3 9-3-3-3 3Z"/></svg></span>
+          <h3>Architecture & Leadership</h3>
+          <p>Led modernization squads and cut technical debt by 60%.</p>
+          <div class="tags"><span>Tech Lead · UX · Testing · DDD</span></div>
+        </div>
+      </div>
 
-        panels.forEach((panel) => {
-          observer.observe(panel);
-        });
-      })();
-    </script>
-  </body>
+      <div class="skill-matrix reveal">
+        <div class="skill-group">
+          <h4>Core Languages</h4>
+          <div class="chips">
+            <span class="chip strong">TypeScript</span>
+            <span class="chip strong">C#</span>
+            <span class="chip">JavaScript</span>
+            <span class="chip strong">Python</span>
+            <span class="chip">SQL</span>
+            <span class="chip">Bash / Zsh</span>
+            <span class="chip strong">Rust</span>
+            <span class="chip strong">Golang</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Frontend Mastery</h4>
+          <div class="chips">
+            <span class="chip strong">Angular</span>
+            <span class="chip">HTML5 / CSS3</span>
+            <span class="chip">WPF</span>
+            <span class="chip strong">React</span>
+            <span class="chip">SASS</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Backend & Platform</h4>
+          <div class="chips">
+            <span class="chip strong">Node.js</span>
+            <span class="chip">REST API</span>
+            <span class="chip">Vector DB</span>
+            <span class="chip">Microservices</span>
+            <span class="chip">Redis</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>AI / Intelligent Systems</h4>
+          <div class="chips">
+            <span class="chip strong">RAG Architect</span>
+            <span class="chip">Prompt Eng</span>
+            <span class="chip">Cursor</span>
+            <span class="chip strong">LangChain</span>
+            <span class="chip strong">Copilot</span>
+            <span class="chip">Local LLMs</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>DevOps Excellence</h4>
+          <div class="chips">
+            <span class="chip strong">Docker</span>
+            <span class="chip strong">CI/CD</span>
+            <span class="chip strong">Git</span>
+            <span class="chip">Azure DevOps</span>
+            <span class="chip">Linux Admin</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h4>Architecture</h4>
+          <div class="chips">
+            <span class="chip strong">Tech Lead</span>
+            <span class="chip">UX Design</span>
+            <span class="chip">Home Auto</span>
+            <span class="chip">Agile</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Experience</p>
+        <h2 class="sec-title">A decade shipping industrial-grade software.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="job reveal">
+          <div class="job-head">
+            <h3>Senior Software Engineer <span class="co">· Emerson</span></h3>
+            <span class="when">APR 2017 — <span class="now">PRESENT</span></span>
+          </div>
+          <ul>
+            <li><b>Framework Modernization:</b> Architected the transition of a legacy C# WPF desktop framework into an Angular/TypeScript web platform, achieving near-perfect feature parity over a <span class="num">4-year solo project</span>.</li>
+            <li><b>Strategic Tech Debt Resolution:</b> Refactored massive legacy codebases to resolve <span class="num">~60% of technical debt</span>; introduced domain-driven architecture and rigorous testing (Vitest/Jest).</li>
+            <li><b>Engineering Leadership:</b> Oversaw a modernization squad; developed reusable integration and design systems leveraging Angular, TypeScript, and modern CSS frameworks.</li>
+            <li><b>DevOps Modernization:</b> Led full SVN-to-Git migration across complex monorepos; implemented Docker-based containerization and automated Azure CI/CD pipelines.</li>
+            <li><b>AI Integration & Governance:</b> Established best practices for GitHub Copilot usage via custom tooling and training. Championed modern PR review workflows.</li>
+            <li><b>Systems Performance:</b> Developed high-throughput C# simulation engines for industrial engineering; iterated on UX via deep user research.</li>
+          </ul>
+        </article>
+
+        <article class="job reveal">
+          <div class="job-head">
+            <h3>Software Engineer <span class="co">· Wood</span></h3>
+            <span class="when">MAY 2012 — APR 2017</span>
+          </div>
+          <ul>
+            <li><b>Industrial Software Design:</b> Built WPF MVVM applications for specialized Oil &amp; Gas fluid-dynamics simulation tooling.</li>
+            <li><b>Operational Efficiency:</b> Streamlined complex engineering configurations through intuitive UI workflows, drastically reducing time-to-result for simulation runs.</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">AI &amp; Systems Exploration</p>
+        <h2 class="sec-title">Things I build when the laptop opens after hours.</h2>
+        <p class="sec-lede">Real, working systems across LLM frameworks, agentic tooling, voice, and native apps.</p>
+      </div>
+
+      <div class="proj-grid">
+        <article class="proj reveal">
+          <div class="proj-top">
+            <span class="mark">J</span>
+            <h3>Jester</h3>
+            <span class="kind">LLM Framework</span>
+          </div>
+          <p>Advanced context-steered storytelling framework built on hybrid GraphRAG. Maintains 40+ interconnected narratives with high consistency using 10,000 lines of custom markdown. Zero code.</p>
+          <div class="tech"><span><b>GraphRAG · Context Selection · LLM Multi-Agent System</b></span></div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-top">
+            <span class="mark">π</span>
+            <h3>pi-coding-agent Extensions</h3>
+            <span class="kind">Dev Tooling</span>
+          </div>
+          <p>Curated extensions for the <a href="https://pi.dev" target="_blank" rel="noopener" style="color:var(--accent)">pi coding agent</a> — deterministic workflow steps, a phased task board with dependency tracking and status gating, and parallel sub-agent orchestration. Published to npm.</p>
+          <a class="pl" href="https://github.com/harms-haus/pi-extensions" target="_blank" rel="noopener">github.com/harms-haus/pi-extensions →</a>
+          <div class="tech"><span><b>TypeScript · AI Agent System · CLI · npm</b></span></div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-top">
+            <span class="mark">A</span>
+            <h3>AI Buddy</h3>
+            <span class="kind">Voice Assistant</span>
+          </div>
+          <p>Privacy-focused voice assistant for my kids. Uses Mastra, Whisper (STT) and Kokoro (TTS) over Home Assistant's ESPHome pipeline to spark curiosity, play music, and control lighting.</p>
+          <a class="pl" href="https://github.com/harms-haus/ai-buddy" target="_blank" rel="noopener">github.com/harms-haus/ai-buddy →</a>
+          <div class="tech"><span><b>TypeScript · Python · Mastra · Whisper · Kokoro · Home Assistant · ESPHome</b></span></div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-top">
+            <span class="mark">B</span>
+            <h3>Bifrost</h3>
+            <span class="kind">Issue Manager</span>
+          </div>
+          <p>AI agent issue manager that turns plans into "runes" (issues) with hierarchical sagas, branch names, and dependencies. Golang CLI/server with a React UI.</p>
+          <div class="tech"><span><b>Golang · React · CLI · AI Agent System</b></span></div>
+        </article>
+
+        <article class="proj reveal">
+          <div class="proj-top">
+            <span class="mark">Y</span>
+            <h3>Ymir</h3>
+            <span class="kind">Workspace Manager</span>
+          </div>
+          <p>Rust (Tauri)/React web and desktop app to manage terminal tabs, browser tabs, and editors in workspaces. Worktree support, secure websockets, web + Tauri access.</p>
+          <div class="tech"><span><b>Rust · Tauri · React · WebSockets · Workspace Management</b></span></div>
+        </article>
+
+        <article class="proj reveal" style="display:flex; align-items:center; justify-content:center; text-align:center; border-style:dashed;">
+          <div>
+            <p class="mono" style="margin-bottom:.6rem">always building</p>
+            <p style="color:var(--text-2)">More in the lab — <a href="https://github.com/harms-haus" target="_blank" rel="noopener" style="color:var(--accent)">see all on GitHub →</a></p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <p class="eyebrow">Education</p>
+        <h2 class="sec-title">Foundations.</h2>
+      </div>
+      <div class="edu">
+        <div class="edu-card reveal">
+          <h3>B.S. Computer Science</h3>
+          <span class="sub">University of Houston · Minor in Mathematics</span>
+          <span class="yr">GRADUATED 2012</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cta reveal">
+      <h2>Let's build <span class="hl">something</span>.</h2>
+      <p>Open to senior engineering, AI/platform, and modernization roles. The fastest way to reach me is email — I reply quickly.</p>
+      <div class="cta-row" style="margin-top:1.9rem">
+        <a class="btn btn--primary" href="mailto:blake@harms.haus">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>
+          blake@harms.haus
+        </a>
+        <a class="btn" href="resume.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3v5h5"/><path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8l-5-5Z"/></svg>
+          Download PDF
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-links">
+      <a href="mailto:blake@harms.haus"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m3 7 9 6 9-6"/></svg>blake@harms.haus</a>
+      <a href="tel:+17137029498"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2 4.2 2 2 0 0 1 4 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.6 2.6.7A2 2 0 0 1 22 16.9Z"/></svg>(713) 702-9498</a>
+      <a href="https://github.com/harms-haus" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.58 2 12.25c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.49 0-.24-.01-.87-.01-1.71-2.78.62-3.37-1.37-3.37-1.37-.45-1.18-1.11-1.49-1.11-1.49-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.89 1.56 2.34 1.11 2.91.85.09-.66.35-1.11.63-1.37-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.3.1-2.71 0 0 .84-.27 2.75 1.05A9.4 9.4 0 0 1 12 6.84c.85 0 1.71.12 2.51.34 1.91-1.32 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.63 1.03 2.75 0 3.94-2.34 4.81-4.57 5.06.36.32.68.94.68 1.9 0 1.37-.01 2.48-.01 2.82 0 .27.18.6.69.49A10.04 10.04 0 0 0 22 12.25C22 6.58 17.52 2 12 2Z"/></svg>github.com/harms-haus</a>
+      <a href="https://linkedin.com/in/blake-harms-7263bb118" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 5a2 2 0 1 1-4 0 2 2 0 0 1 4 0ZM3 8.5h3.9V21H3V8.5Zm6.5 0h3.7v1.7h.05c.52-.93 1.78-1.9 3.67-1.9 3.92 0 4.65 2.4 4.65 5.5V21h-3.9v-5.9c0-1.4 0-3.2-2-3.2s-2.25 1.5-2.25 3.1V21H9.5V8.5Z"/></svg>LinkedIn</a>
+      <a href="https://harms-haus.github.io/resume/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20Z"/></svg>harms-haus.github.io</a>
+    </div>
+
+    <div class="footer-base">
+      <span>© <span id="yr">2026</span> Blake Harms · Katy, Texas</span>
+      <span>Designed &amp; built by hand · <a class="top-link" href="#main">Back to top ↑</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // year
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // scroll reveal
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const reveals = document.querySelectorAll('.reveal');
+  if (reduce) {
+    reveals.forEach(el => el.classList.add('in'));
+  } else {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    reveals.forEach(el => io.observe(el));
+  }
+
+  // active nav highlighting
+  const navLinks = document.querySelectorAll('.toc a[href^="#"]');
+  const sections = [...navLinks].map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+  const navMap = {};
+  navLinks.forEach(a => { const id = a.getAttribute('href'); navMap[id] = a; });
+  const spy = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => a.classList.remove('is-active'));
+        const active = navMap['#' + e.target.id];
+        if (active) active.classList.add('is-active');
+      }
+    });
+  }, { rootMargin: '-45% 0px -50% 0px' });
+  sections.forEach(s => spy.observe(s));
+</script>
+</body>
 </html>

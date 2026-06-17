@@ -41,13 +41,13 @@ Full-stack software engineer with 8+ years experience (Emerson, Wood), specializ
 Advanced context-steered storytelling framework built on hybrid GraphRAG. Maintains 40+ interconnected narratives with high consistency using 10,000 lines of custom markdown. Context is selectively included based on the current stage of the story generation. Zero code.
 - **Tech Cache:** GraphRAG · Context Selection · LLM Multi-Agent System
 
-#### Bernard | Smart Assistant
-Privacy-first family voice assistant utilizing LangChain and RAG. Integrates with Home Assistant APIs to provide kid-friendly, voice-controlled automations. Managed with a custom dashboard built on React. Uses ESPHome devices for voice ingress and media playback.
-- **Tech Cache:** LangChain · Home Assistant · Voice Recognition · Local LLM
+#### pi-coding-agent Extensions | Agentic Developer Tooling
+A curated collection of extensions for the [pi coding agent](https://pi.dev) ([GitHub](https://github.com/harms-haus/pi-extensions)) — an agentic coding workflow including deterministic workflow steps, a phased task board with dependency tracking and status gating (ready → implementing → reviewing → done), parallel sub-agent orchestration, and more. Built in TypeScript using pi's extension SDK and published to npm.
+- **Tech Cache:** TypeScript · AI Agent System · CLI · Developer Tooling · npm
 
-#### Memoriae | Knowledge Engine
-Intelligent personal knowledge base with automated semantic tagging and organization via LLM. High-performance Redis-backed architecture for instant retrieval. Uses BullMQ for background processing.
-- **Tech Cache:** Redis · Semantic Tagging · Node.js · LLM Enrichment · BullMQ
+#### AI Buddy | Kids' Voice Assistant
+Privacy-focused voice assistant for my kids. Uses Mastra (agent orchestration), Whisper (STT), and Kokoro (TTS) over Home Assistant's ESPHome voice-assistant pipeline (Wyoming protocol) to inspire curiosity, play kid-friendly music, and control lighting in their rooms. ([GitHub](https://github.com/harms-haus/ai-buddy))
+- **Tech Cache:** TypeScript · Python · Mastra · Whisper · Kokoro · Home Assistant · ESPHome
 
 #### Bifrost | AI Agent Issue Manager
 AI agent issue manager that turns plans into "runes" (issues) with hierarchical sagas, branch names, and dependencies. Built with Golang CLI/server and React UI (with Golang test version).
